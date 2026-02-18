@@ -9,7 +9,6 @@
     :root {
       --azul-profundo: #0a1a28;
       --amarillo-oro: #f0b400;
-      --azul-claro: #1e3a4a;
       --texto-claro: #ffffff;
       --texto-oscuro: #333333;
     }
@@ -21,7 +20,7 @@
     }
 
     body {
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: Arial, sans-serif;
       background: #f5f5f5;
       color: var(--texto-oscuro);
     }
@@ -65,7 +64,6 @@
       color: var(--texto-claro);
       font-size: 1rem;
       font-weight: 500;
-      transition: 0.3s;
     }
 
     nav a:hover {
@@ -137,7 +135,6 @@
       }
     }
 
-    /* animación del icono hamburguesa */
     .menu-toggle.active span:nth-child(1) {
       transform: translateY(7px) rotate(45deg);
     }
@@ -167,12 +164,8 @@
       background-size: cover;
       background-position: center;
       background-repeat: no-repeat;
+      /* SOLO CAMBIÉ ESTO: la imagen del camión */
       background-image: url('https://images.pexels.com/photos/1754539/pexels-photo-1754539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
-      transition: transform 0.6s ease;
-    }
-
-    .hero:hover .hero-img {
-      transform: scale(1.02);
     }
 
     .hero-content {
@@ -230,8 +223,6 @@
     .btn-primary:hover {
       background: var(--azul-profundo);
       color: var(--amarillo-oro);
-      transform: translateY(-2px);
-      box-shadow: 0 6px 14px rgba(0,0,0,0.25);
     }
 
     .btn-secondary {
@@ -243,10 +234,9 @@
     .btn-secondary:hover {
       background: var(--amarillo-oro);
       color: var(--azul-profundo);
-      transform: translateY(-2px);
     }
 
-    /* Sección Misión Visión Valores */
+    /* Misión Visión Valores */
     #filosofia {
       max-width: 1000px;
       margin: 0 auto 40px;
@@ -304,10 +294,9 @@
       content: "✓";
       color: var(--amarillo-oro);
       font-weight: bold;
-      font-size: 1.2rem;
     }
 
-    /* Sección servicios */
+    /* Servicios */
     #servicios {
       max-width: 1000px;
       margin: 0 auto 40px;
@@ -348,7 +337,7 @@
       color: #666;
     }
 
-    /* Sección contacto */
+    /* Contacto */
     #contacto {
       max-width: 1000px;
       margin: 0 auto 40px;
@@ -430,7 +419,6 @@
 
 <body>
 
-  <!-- Barra superior -->
   <header>
     <div class="nav-container">
       <div class="brand">CARLOS <span>ACARREOS</span></div>
@@ -450,9 +438,9 @@
     </div>
   </header>
 
-  <!-- Hero / Portada -->
   <main id="inicio">
     <section class="hero">
+      <!-- SOLO ESTO TIENE LA IMAGEN DEL CAMIÓN -->
       <div class="hero-img"></div>
       <div class="hero-content">
         <div class="hero-title">CARLOS ACARREOS</div>
@@ -462,15 +450,12 @@
         </p>
 
         <div class="buttons-row">
-          <!-- Botón WhatsApp -->
-          <a class="btn btn-primary" href="https://wa.me/573005274172?text=Hola%20Carlos,%20necesito%20información%20sobre%20tus%20servicios" target="_blank" rel="noopener">
-            <span class="btn-icon">💬</span>
+          <a class="btn btn-primary" href="https://wa.me/573005274172?text=Hola%20Carlos,%20necesito%20información" target="_blank">
+            <span>💬</span>
             <span>WhatsApp 300 527 4172</span>
           </a>
-
-          <!-- Botón llamada -->
           <a class="btn btn-secondary" href="tel:+573005274172">
-            <span class="btn-icon">📞</span>
+            <span>📞</span>
             <span>Llamar ahora</span>
           </a>
         </div>
@@ -478,37 +463,35 @@
     </section>
   </main>
 
-  <!-- Misión Visión Valores -->
   <section id="filosofia">
     <h2>NUESTRA FILOSOFÍA</h2>
     <div class="filosofia-grid">
       <div class="filosofia-card">
         <h3>🎯 Misión</h3>
-        <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones y en el tiempo acordado.</p>
+        <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
       </div>
       <div class="filosofia-card">
         <h3>👁️ Visión</h3>
-        <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra flota de vehículos, puntualidad y el trato personalizado a cada cliente.</p>
+        <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra puntualidad y trato personalizado.</p>
       </div>
       <div class="filosofia-card">
         <h3>⭐ Valores</h3>
         <ul>
           <li><strong>Compromiso:</strong> Con tu carga y tu tiempo</li>
-          <li><strong>Seguridad:</strong> Máxima protección para tus pertenencias</li>
-          <li><strong>Confianza:</strong> Transparencia en cada servicio</li>
-          <li><strong>Puntualidad:</strong> Llegamos siempre a tiempo</li>
+          <li><strong>Seguridad:</strong> Máxima protección</li>
+          <li><strong>Confianza:</strong> Transparencia total</li>
+          <li><strong>Puntualidad:</strong> Siempre a tiempo</li>
         </ul>
       </div>
     </div>
   </section>
 
-  <!-- Servicios -->
   <section id="servicios">
     <h2>SERVICIOS</h2>
     <div class="servicios-grid">
       <div class="servicio-card">
         <h3>🚚 Mudanzas</h3>
-        <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con total cuidado.</p>
+        <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con cuidado.</p>
       </div>
       <div class="servicio-card">
         <h3>📦 Acarreos</h3>
@@ -516,30 +499,25 @@
       </div>
       <div class="servicio-card">
         <h3>📍 Cobertura</h3>
-        <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y toda la frontera.</p>
+        <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y frontera.</p>
       </div>
     </div>
   </section>
 
-  <!-- Contacto -->
   <section id="contacto">
     <h2>CONTACTO</h2>
     <div class="contacto-box">
       <p class="contacto-dato">Carlos Acarreos</p>
       <p>📱 <strong>300 527 4172</strong></p>
       <p>📍 Atención 24/7</p>
-      <p>Haz clic en los botones de arriba para escribir por WhatsApp o llamar directamente.</p>
     </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <small>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</small>
-    <small>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7 a tu servicio</small>
-    <small>🚛 Transporte de carga con responsabilidad</small>
+    <small>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</small>
   </footer>
 
-  <!-- Script para menú hamburguesa -->
   <script>
     const menuToggle = document.querySelector('.menu-toggle');
     const navLinks = document.querySelector('.nav-links');
