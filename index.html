@@ -9,16 +9,16 @@
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background: #f4f7fc;
+            background-color: #f0f4f8;
         }
 
-        /* ===== MENÚ CON JAVASCRIPT (AHORA SÍ) ===== */
+        /* ===== MENÚ CON JAVASCRIPT GARANTIZADO ===== */
         header {
-            background: #0a1a28;
+            background-color: #0a1a28;
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
@@ -36,7 +36,7 @@
 
         .logo {
             color: white;
-            font-size: 1.8rem;
+            font-size: 2rem;
             font-weight: 700;
         }
 
@@ -74,12 +74,12 @@
             border: none;
         }
 
-        /* ===== PORTADA CON CAMIÓN PEQUEÑO (AHORA SÍ) ===== */
+        /* ===== PORTADA CON CAMIÓN CORRECTO ===== */
         .hero {
             width: 100%;
             min-height: 85vh;
             background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+                        url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop');
             background-size: cover;
             background-position: center 30%;
             display: flex;
@@ -91,13 +91,13 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
         }
 
         .hero-content h1 {
             font-size: 4rem;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            text-shadow: 2px 2px 5px black;
         }
 
         .hero-content p {
@@ -113,9 +113,9 @@
             color: white;
             padding: 1.2rem 3rem;
             font-size: 1.5rem;
+            font-weight: bold;
             text-decoration: none;
             border-radius: 60px;
-            font-weight: bold;
             border: 2px solid #f0b400;
             transition: 0.3s;
         }
@@ -125,7 +125,7 @@
             transform: scale(1.05);
         }
 
-        /* ===== MISIÓN, VISIÓN, VALORES (CENTRADOS) ===== */
+        /* ===== MISIÓN, VISIÓN, VALORES ===== */
         .filosofia {
             max-width: 1200px;
             margin: 5rem auto;
@@ -137,7 +137,7 @@
 
         .filosofia-item {
             background: white;
-            padding: 2rem;
+            padding: 2.5rem 2rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
@@ -147,24 +147,22 @@
         .filosofia-item h2 {
             color: #0a1a28;
             font-size: 2rem;
-            margin-bottom: 1rem;
+            margin-bottom: 1.5rem;
         }
 
         .filosofia-item p {
             color: #444;
             font-size: 1.1rem;
-            line-height: 1.5;
+            line-height: 1.6;
         }
 
         .filosofia-item ul {
             list-style: none;
             text-align: left;
-            margin-top: 1rem;
         }
 
         .filosofia-item li {
-            margin: 0.8rem 0;
-            font-size: 1.1rem;
+            margin: 1rem 0;
             display: flex;
             align-items: center;
             gap: 0.5rem;
@@ -174,6 +172,7 @@
             content: "✓";
             color: #f0b400;
             font-weight: bold;
+            font-size: 1.2rem;
         }
 
         /* ===== SERVICIOS ===== */
@@ -259,16 +258,11 @@
             }
 
             .hero-content h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
 
             .hero-content p {
-                font-size: 1.4rem;
-            }
-
-            .btn-wsp {
                 font-size: 1.2rem;
-                padding: 1rem 2rem;
             }
         }
     </style>
@@ -278,10 +272,7 @@
     <header>
         <div class="navbar">
             <div class="logo">CARLOS <span>ACARREOS</span></div>
-            
-            <!-- Botón hamburguesa con ID único -->
             <button class="hamburguesa" id="menuToggle">☰</button>
-            
             <ul class="nav-menu" id="mainMenu">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Servicios</a></li>
@@ -291,7 +282,7 @@
         </div>
     </header>
 
-    <!-- PORTADA: CAMIÓN PEQUEÑO -->
+    <!-- PORTADA: CAMIÓN CORRECTO -->
     <section class="hero">
         <div class="hero-content">
             <h1>CARLOS ACARREOS</h1>
@@ -300,7 +291,7 @@
         </div>
     </section>
 
-    <!-- MISIÓN, VISIÓN, VALORES (CENTRADOS) -->
+    <!-- MISIÓN, VISIÓN, VALORES -->
     <section class="filosofia">
         <div class="filosofia-item">
             <h2>🎯 Misión</h2>
@@ -316,6 +307,7 @@
                 <li><strong>Compromiso:</strong> Con tu carga y tiempo</li>
                 <li><strong>Seguridad:</strong> Máxima protección</li>
                 <li><strong>Confianza:</strong> Transparencia total</li>
+                <li><strong>Puntualidad:</strong> Siempre a tiempo</li>
             </ul>
         </div>
     </section>
@@ -340,42 +332,40 @@
         <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</p>
     </footer>
 
-    <!-- JAVASCRIPT: MENÚ 100% FUNCIONAL -->
+    <!-- JAVASCRIPT: MENÚ 100% GARANTIZADO -->
     <script>
-        // Esperar a que la página cargue completamente
-        document.addEventListener('DOMContentLoaded', function() {
+        (function() {
+            // Esta función se ejecuta inmediatamente
             const menuBtn = document.getElementById('menuToggle');
             const menu = document.getElementById('mainMenu');
 
-            // Verificar que los elementos existen
             if (menuBtn && menu) {
-                // Función para abrir/cerrar menú
-                function toggleMenu() {
-                    menu.classList.toggle('active');
-                }
+                console.log('Menú encontrado, activando eventos...');
 
-                // Evento click en el botón
-                menuBtn.addEventListener('click', function(e) {
-                    e.preventDefault();
-                    toggleMenu();
+                menuBtn.addEventListener('click', function(event) {
+                    event.preventDefault();
+                    event.stopPropagation();
+                    menu.classList.toggle('active');
+                    console.log('Menú clickeado, clase active:', menu.classList.contains('active'));
                 });
 
-                // Cerrar menú al hacer clic en un enlace
-                const links = menu.querySelectorAll('a');
-                links.forEach(link => {
+                // Cerrar al hacer clic en un enlace
+                menu.querySelectorAll('a').forEach(link => {
                     link.addEventListener('click', function() {
                         menu.classList.remove('active');
                     });
                 });
 
-                // Cerrar menú al hacer clic fuera (opcional)
+                // Cerrar al hacer clic fuera
                 document.addEventListener('click', function(event) {
                     if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
                         menu.classList.remove('active');
                     }
                 });
+            } else {
+                console.error('No se encontraron los elementos del menú');
             }
-        });
+        })();
     </script>
 
 </body>
