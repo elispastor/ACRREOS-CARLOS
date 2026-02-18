@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarjeta Profesional - Servicio de Acarreos</title>
+    <title>Tarjeta Carlos - Camión de Acarreos</title>
     <style>
         * {
             margin: 0;
@@ -12,7 +12,7 @@
         }
 
         body {
-            background: #1a2a3a;
+            background: #1e2b3a;
             min-height: 100vh;
             display: flex;
             flex-direction: column;
@@ -22,7 +22,17 @@
             padding: 20px;
         }
 
-        /* Contenedor de las tarjetas */
+        .instruccion {
+            color: #f0b400;
+            font-size: 1.5rem;
+            margin-bottom: 20px;
+            text-align: center;
+            background: #2c3e50;
+            padding: 15px 30px;
+            border-radius: 60px;
+        }
+
+        /* Contenedor de tarjetas */
         .tarjetas {
             display: flex;
             flex-wrap: wrap;
@@ -31,42 +41,41 @@
             margin: 30px 0;
         }
 
-        /* Cada tarjeta mide 800x500px para verse bien en pantalla (proporción 8x5) */
+        /* Tarjeta individual 8x5 (800x500px para vista previa) */
         .tarjeta {
             width: 800px;
             height: 500px;
             background: white;
             border-radius: 30px;
             overflow: hidden;
-            box-shadow: 0 30px 50px rgba(0,0,0,0.5);
+            box-shadow: 0 30px 50px rgba(0,0,0,0.6);
             position: relative;
-            border: 2px solid rgba(255,255,255,0.1);
+            border: 2px solid rgba(255,215,0,0.3);
         }
 
-        /* ===== ANVERSO (FRONTAL) ===== */
+        /* ===== ANVERSO ===== */
         .anverso {
-            background: linear-gradient(135deg, #0c1c2b 0%, #1e3a4a 100%);
+            background: linear-gradient(145deg, #0a1a28 0%, #1c3343 100%);
             color: white;
-            padding: 40px;
+            padding: 35px;
             display: flex;
             flex-direction: column;
             position: relative;
         }
 
-        /* Fondo decorativo de la camioneta (sin imágenes externas) */
-        .anverso::after {
-            content: "🚐";
-            font-size: 250px;
+        /* Camión SVG (dibujo vectorial) - CAMIÓN CHICO, NO CAMIONETA */
+        .camion-svg {
             position: absolute;
-            bottom: -20px;
-            right: -20px;
-            opacity: 0.1;
-            color: #f0b400;
-            transform: rotate(5deg);
+            bottom: 30px;
+            right: 30px;
+            width: 280px;
+            height: auto;
+            opacity: 0.25;
+            z-index: 1;
         }
 
         .logo {
-            font-size: 2.8rem;
+            font-size: 2.6rem;
             font-weight: 800;
             line-height: 1.2;
             position: relative;
@@ -75,29 +84,28 @@
 
         .logo span {
             color: #f0b400;
-            display: block;
-            font-size: 2.2rem;
+            font-size: 2rem;
             font-weight: 400;
-            letter-spacing: 2px;
+            display: block;
         }
 
         .slogan {
-            font-size: 1.4rem;
+            font-size: 1.5rem;
             margin-top: 20px;
-            color: #aaccdd;
-            border-left: 4px solid #f0b400;
+            border-left: 5px solid #f0b400;
             padding-left: 20px;
+            color: #ccddee;
             position: relative;
             z-index: 2;
         }
 
         .whatsapp {
-            background: rgba(0,0,0,0.3);
+            background: rgba(0,0,0,0.4);
             backdrop-filter: blur(5px);
-            padding: 25px 30px;
+            padding: 20px 30px;
             border-radius: 60px;
             margin-top: auto;
-            margin-bottom: 20px;
+            margin-bottom: 30px;
             border: 2px solid #f0b400;
             display: flex;
             align-items: center;
@@ -108,30 +116,20 @@
         }
 
         .whatsapp .icono {
-            font-size: 3.5rem;
+            font-size: 3rem;
         }
 
         .whatsapp .numero {
-            font-size: 2.5rem;
+            font-size: 2.4rem;
             font-weight: 700;
             color: #f0b400;
         }
 
-        .modelo {
-            position: absolute;
-            bottom: 20px;
-            right: 30px;
-            color: #f0b400;
-            font-size: 1.2rem;
-            opacity: 0.8;
-            z-index: 2;
-        }
-
         /* ===== REVERSO ===== */
         .reverso {
-            background: #0c1c2b;
+            background: #0a1a28;
             color: white;
-            padding: 40px;
+            padding: 35px;
             display: flex;
             flex-direction: column;
         }
@@ -144,23 +142,23 @@
             padding-bottom: 10px;
         }
 
-        .destinos {
+        .destinos-grid {
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px;
+            gap: 15px 30px;
             flex: 1;
-            margin: 20px 0;
+            margin: 15px 0;
         }
 
-        .destinos p {
+        .destinos-grid p {
             font-size: 1.3rem;
             margin: 5px 0;
             display: flex;
             align-items: center;
-            gap: 10px;
+            gap: 8px;
         }
 
-        .destinos p::before {
+        .destinos-grid p::before {
             content: "✓";
             color: #f0b400;
             font-weight: bold;
@@ -170,8 +168,8 @@
         .frontera {
             background: rgba(240,180,0,0.1);
             border: 2px dashed #f0b400;
-            padding: 20px;
-            border-radius: 50px;
+            padding: 15px;
+            border-radius: 40px;
             text-align: center;
             font-size: 1.3rem;
             margin-top: auto;
@@ -184,7 +182,7 @@
 
         .medidas {
             color: white;
-            margin-top: 20px;
+            margin-top: 30px;
             font-size: 1.2rem;
             background: #2c3e50;
             padding: 10px 30px;
@@ -193,33 +191,51 @@
     </style>
 </head>
 <body>
-    <h1 style="color: #f0b400; margin-bottom: 10px;">✅ TARJETA PROFESIONAL 8x5 cm</h1>
-    <p style="color: white; font-size: 1.2rem; margin-bottom: 20px;">Anverso y Reverso - Diseño listo para imprimir</p>
+    <div class="instruccion">
+        🚚 TARJETA DE CARLOS - CAMIÓN DE CARGA (CORREGIDO) 🚚
+    </div>
 
     <div class="tarjetas">
-        <!-- ANVERSO (FRONTAL) -->
+        <!-- ANVERSO con CAMIÓN CHICO -->
         <div class="tarjeta anverso">
+            <!-- DIBUJO DEL CAMIÓN (SVG) - ESTO ES UN CAMIÓN, NO CAMIONETA -->
+            <svg class="camion-svg" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <!-- Cabina -->
+                <rect x="20" y="35" width="45" height="30" rx="6" fill="#f0b400" stroke="#ffffff" stroke-width="2"/>
+                <!-- Ventana -->
+                <rect x="25" y="40" width="15" height="12" fill="#0a1a28"/>
+                <!-- Caja/carga trasera -->
+                <rect x="65" y="25" width="80" height="40" rx="4" fill="#f0b400" fill-opacity="0.7" stroke="#ffffff" stroke-width="2"/>
+                <!-- Ruedas -->
+                <circle cx="45" cy="70" r="12" fill="#333" stroke="#ffffff" stroke-width="2"/>
+                <circle cx="120" cy="70" r="12" fill="#333" stroke="#ffffff" stroke-width="2"/>
+                <!-- Llantas interiores -->
+                <circle cx="45" cy="70" r="6" fill="#111"/>
+                <circle cx="120" cy="70" r="6" fill="#111"/>
+                <!-- Línea de velocidad (opcional) -->
+                <path d="M150 45 L170 35 L175 45" stroke="#ffffff" stroke-width="3" fill="none"/>
+            </svg>
+
             <div class="logo">
-                TRANSPORTES 
-                <span>& ACARREOS</span>
+                CARLOS <span>ACARREOS</span>
             </div>
             <div class="slogan">
-                Seguridad y compromiso <br>
-                en cada viaje
+                Tu carga segura <br> a donde sea
             </div>
             <div class="whatsapp">
                 <span class="icono">📱</span>
                 <span class="numero">300 527 4172</span>
             </div>
-            <div class="modelo">
-                Chevrolet Traverse
+            <!-- Texto pequeño indicando vehículo -->
+            <div style="position: absolute; bottom: 20px; left: 30px; color: #f0b400; font-size: 1rem; z-index: 2;">
+                Camión NPR · Carga liviana
             </div>
         </div>
 
-        <!-- REVERSO -->
+        <!-- REVERSO (igual que antes, con los destinos) -->
         <div class="tarjeta reverso">
             <h2>📍 DESTINOS</h2>
-            <div class="destinos">
+            <div class="destinos-grid">
                 <div>
                     <p>Bucaramanga</p>
                     <p>Bogotá</p>
@@ -241,16 +257,20 @@
                 🌎 <strong>VIAJAMOS A TODAS PARTES</strong><br>
                 Nacional · Internacional · Frontera
             </div>
+            <!-- Pie pequeño -->
+            <div style="margin-top: 10px; text-align: right; color: #f0b400; font-size: 1rem;">
+                www.carlosacarreos.com
+            </div>
         </div>
     </div>
 
     <div class="medidas">
-        ⚡ Medidas reales: 8 cm x 5 cm | Diseño 100% funcional y editable
+        ⚡ Medidas exactas: 8 cm x 5 cm | Anverso: Camión chico (NPR) | Reverso: Destinos
     </div>
 
-    <div style="margin-top: 30px; color: #aaccdd; text-align: center; max-width: 800px;">
-        <p>✅ Para imprimir: Guarde esta página como PDF o capture las imágenes.</p>
-        <p>✅ Si quiere la foto real de la camioneta del cliente, envíeme la imagen y la incorporo al instante.</p>
+    <div style="margin-top: 30px; color: #aaccdd; text-align: center; max-width: 800px; background: #1e3344; padding: 20px; border-radius: 30px;">
+        ✅ Para imprimir: Guarde esta página como PDF o capture las imágenes.<br>
+        ✅ El camión ya no es camioneta, es un camión de carga pequeño, tal como lo pidió.
     </div>
 </body>
 </html>
