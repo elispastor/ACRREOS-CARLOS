@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Acarreos | Camión 350 con Carpa</title>
+    <title>Carlos Acarreos | Transporte de Carga</title>
     <style>
         * {
             margin: 0;
@@ -13,7 +13,7 @@
         }
 
         body {
-            background-color: #f9f9f9;
+            background-color: #ffffff;
         }
 
         /* ===== MENÚ HAMBURGUESA (AHORA SÍ FUNCIONA) ===== */
@@ -66,12 +66,13 @@
             color: #f0b400;
         }
 
-        /* Icono hamburguesa (oculto en escritorio) */
+        /* Icono hamburguesa */
         .hamburguesa {
             display: none;
             font-size: 2.5rem;
             color: white;
             cursor: pointer;
+            user-select: none;
         }
 
         /* Checkbox oculto */
@@ -79,12 +80,12 @@
             display: none;
         }
 
-        /* ===== PORTADA CON CAMIÓN 350 Y CARPA ===== */
+        /* ===== PORTADA CON CAMIÓN DE FRENTE EN VÍA ===== */
         .hero {
             width: 100%;
-            height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop');
+            height: 90vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
             background-position: center 40%;
             display: flex;
@@ -95,21 +96,24 @@
         }
 
         .hero-content {
-            max-width: 800px;
+            max-width: 900px;
             padding: 2rem;
         }
 
         .hero-content h1 {
-            font-size: 4rem;
+            font-size: 4.5rem;
+            font-weight: 800;
             margin-bottom: 1rem;
-            text-shadow: 2px 2px 5px black;
+            text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
+            letter-spacing: 2px;
         }
 
         .hero-content p {
-            font-size: 1.8rem;
-            margin-bottom: 2rem;
+            font-size: 2rem;
+            margin-bottom: 2.5rem;
             color: #f0b400;
-            font-weight: 500;
+            font-weight: 600;
+            text-shadow: 1px 1px 3px black;
         }
 
         .btn-wsp {
@@ -117,12 +121,13 @@
             background: #25D366;
             color: white;
             padding: 1.2rem 3rem;
-            font-size: 1.5rem;
+            font-size: 1.6rem;
             font-weight: bold;
             text-decoration: none;
             border-radius: 60px;
             box-shadow: 0 5px 15px rgba(0,0,0,0.3);
             transition: 0.3s;
+            border: 2px solid #f0b400;
         }
 
         .btn-wsp:hover {
@@ -156,7 +161,7 @@
 
         .filosofia-item h2 {
             color: #0a1a28;
-            font-size: 2rem;
+            font-size: 2.2rem;
             margin-bottom: 1.5rem;
         }
 
@@ -232,10 +237,10 @@
             text-decoration: none;
         }
 
-        /* ===== RESPONSIVE (MENÚ HAMBURGUESA ACTIVADO) ===== */
+        /* ===== RESPONSIVE (MENÚ HAMBURGUESA FUNCIONAL) ===== */
         @media (max-width: 768px) {
             .hamburguesa {
-                display: block; /* Mostrar hamburguesa en móvil */
+                display: block;
             }
 
             .nav-menu {
@@ -255,7 +260,6 @@
                 z-index: 999;
             }
 
-            /* Cuando el checkbox está marcado, el menú se despliega */
             #menu-check:checked ~ .nav-menu {
                 max-height: 400px;
                 padding: 1rem 0;
@@ -277,29 +281,30 @@
             }
 
             .hero-content h1 {
-                font-size: 2.5rem;
+                font-size: 2.8rem;
             }
 
             .hero-content p {
-                font-size: 1.2rem;
+                font-size: 1.4rem;
+            }
+
+            .btn-wsp {
+                font-size: 1.3rem;
+                padding: 1rem 2rem;
             }
         }
     </style>
 </head>
 <body>
 
-    <!-- HEADER CON MENÚ FUNCIONAL -->
+    <!-- HEADER CON MENÚ QUE SÍ FUNCIONA -->
     <header>
         <div class="navbar">
             <div class="logo">CARLOS <span>ACARREOS</span></div>
             
-            <!-- Checkbox oculto que controla el menú -->
             <input type="checkbox" id="menu-check">
-            
-            <!-- Label que actúa como icono hamburguesa -->
             <label for="menu-check" class="hamburguesa">☰</label>
             
-            <!-- Menú de navegación -->
             <ul class="nav-menu">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Servicios</a></li>
@@ -309,12 +314,12 @@
         </div>
     </header>
 
-    <!-- PORTADA CON CAMIÓN 350 Y CARPA -->
+    <!-- PORTADA: CAMIÓN DE FRENTE EN LA VÍA -->
     <section class="hero">
         <div class="hero-content">
             <h1>CARLOS ACARREOS</h1>
-            <p>🚛 Camión 350 con carpa · Carga segura</p>
-            <a href="https://wa.me/573005274172?text=Hola%20Carlos,%20necesito%20información%20sobre%20tus%20servicios" class="btn-wsp" target="_blank">📱 WhatsApp 300 527 4172</a>
+            <p>Seguridad · Compromiso · Puntualidad</p>
+            <a href="https://wa.me/573005274172?text=Hola%20Carlos,%20necesito%20información%20sobre%20tus%20servicios" class="btn-wsp" target="_blank">📱 Contáctame al 300 527 4172</a>
         </div>
     </section>
 
@@ -326,7 +331,7 @@
         </div>
         <div class="filosofia-item">
             <h2>👁️ Visión</h2>
-            <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra flota de camiones 350 con carpa, nuestra puntualidad y el trato personalizado a cada cliente.</p>
+            <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra flota de camiones, nuestra puntualidad y el trato personalizado a cada cliente.</p>
         </div>
         <div class="filosofia-item">
             <h2>⭐ Valores</h2>
@@ -339,7 +344,7 @@
         </div>
     </section>
 
-    <!-- SERVICIOS (opcional) -->
+    <!-- SERVICIOS -->
     <section class="servicios">
         <div class="servicio-item">
             <h3>🚚 Mudanzas</h3>
@@ -358,8 +363,8 @@
     <!-- PIE DE PÁGINA -->
     <footer>
         <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
-        <p>Teléfono: <a href="tel:+573005274172">300 527 4172</a> · 24/7 a tu servicio</p>
-        <p>🚛 Camión 350 con carpa · Transporte de confianza</p>
+        <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7 a tu servicio</p>
+        <p>🚛 Transporte de carga con responsabilidad</p>
     </footer>
 
 </body>
