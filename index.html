@@ -3,27 +3,26 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Acarreos · El que tapa sopa</title>
+    <title>Carlos Acarreos · Camioncito</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', sans-serif;
         }
 
         body {
-            background-color: #f0f4f8;
+            background: #f4f7fc;
         }
 
-        /* ===== MENÚ CON JAVASCRIPT GARANTIZADO ===== */
+        /* MENÚ CON CHECKBOX (FUNCIONA SIEMPRE) */
         header {
-            background-color: #0a1a28;
+            background: #0a1a28;
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
             z-index: 1000;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.3);
         }
 
         .navbar {
@@ -44,6 +43,18 @@
             color: #f0b400;
         }
 
+        /* Checkbox oculto */
+        #menu-check {
+            display: none;
+        }
+
+        .menu-icono {
+            display: none;
+            font-size: 2.5rem;
+            color: white;
+            cursor: pointer;
+        }
+
         .nav-menu {
             display: flex;
             list-style: none;
@@ -54,173 +65,11 @@
             color: white;
             text-decoration: none;
             font-size: 1.2rem;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            border-bottom: 3px solid transparent;
-            transition: 0.3s;
         }
 
-        .nav-menu li a:hover {
-            border-bottom-color: #f0b400;
-            color: #f0b400;
-        }
-
-        .hamburguesa {
-            display: none;
-            font-size: 2.5rem;
-            color: white;
-            cursor: pointer;
-            background: none;
-            border: none;
-        }
-
-        /* ===== PORTADA CON CAMIÓN CORRECTO ===== */
-        .hero {
-            width: 100%;
-            min-height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
-                        url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop');
-            background-size: cover;
-            background-position: center 30%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            text-align: center;
-            color: white;
-            padding: 2rem;
-        }
-
-        .hero-content {
-            max-width: 900px;
-        }
-
-        .hero-content h1 {
-            font-size: 4rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 5px black;
-        }
-
-        .hero-content p {
-            font-size: 2rem;
-            margin-bottom: 2rem;
-            color: #f0b400;
-            font-weight: 600;
-        }
-
-        .btn-wsp {
-            display: inline-block;
-            background: #25D366;
-            color: white;
-            padding: 1.2rem 3rem;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 60px;
-            border: 2px solid #f0b400;
-            transition: 0.3s;
-        }
-
-        .btn-wsp:hover {
-            background: #128C7E;
-            transform: scale(1.05);
-        }
-
-        /* ===== MISIÓN, VISIÓN, VALORES ===== */
-        .filosofia {
-            max-width: 1200px;
-            margin: 5rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
-        }
-
-        .filosofia-item {
-            background: white;
-            padding: 2.5rem 2rem;
-            border-radius: 20px;
-            box-shadow: 0 10px 30px rgba(0,0,0,0.1);
-            text-align: center;
-            border-top: 5px solid #f0b400;
-        }
-
-        .filosofia-item h2 {
-            color: #0a1a28;
-            font-size: 2rem;
-            margin-bottom: 1.5rem;
-        }
-
-        .filosofia-item p {
-            color: #444;
-            font-size: 1.1rem;
-            line-height: 1.6;
-        }
-
-        .filosofia-item ul {
-            list-style: none;
-            text-align: left;
-        }
-
-        .filosofia-item li {
-            margin: 1rem 0;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
-
-        .filosofia-item li::before {
-            content: "✓";
-            color: #f0b400;
-            font-weight: bold;
-            font-size: 1.2rem;
-        }
-
-        /* ===== SERVICIOS ===== */
-        .servicios {
-            max-width: 1200px;
-            margin: 5rem auto;
-            padding: 0 2rem;
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .servicio-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 15px;
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-            text-align: center;
-            border-bottom: 4px solid #f0b400;
-        }
-
-        .servicio-item h3 {
-            color: #0a1a28;
-            font-size: 1.8rem;
-            margin-bottom: 1rem;
-        }
-
-        /* ===== PIE DE PÁGINA ===== */
-        footer {
-            background: #0a1a28;
-            color: white;
-            text-align: center;
-            padding: 2rem;
-            border-top: 4px solid #f0b400;
-        }
-
-        footer p {
-            margin: 0.5rem 0;
-        }
-
-        footer a {
-            color: #f0b400;
-            text-decoration: none;
-        }
-
-        /* ===== RESPONSIVE ===== */
+        /* Responsive */
         @media (max-width: 768px) {
-            .hamburguesa {
+            .menu-icono {
                 display: block;
             }
 
@@ -235,10 +84,9 @@
                 align-items: center;
                 gap: 0;
                 padding: 1rem 0;
-                box-shadow: 0 10px 15px rgba(0,0,0,0.3);
             }
 
-            .nav-menu.active {
+            #menu-check:checked ~ .nav-menu {
                 display: flex;
             }
 
@@ -248,125 +96,111 @@
                 padding: 1rem 0;
                 border-bottom: 1px solid #f0b400;
             }
+        }
 
-            .nav-menu li:last-child {
-                border-bottom: none;
-            }
+        /* PORTADA */
+        .hero {
+            width: 100%;
+            min-height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop');
+            background-size: cover;
+            background-position: center;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            color: white;
+        }
 
-            .filosofia {
-                grid-template-columns: 1fr;
-            }
+        .hero-content h1 {
+            font-size: 3.5rem;
+            margin-bottom: 1rem;
+        }
 
-            .hero-content h1 {
-                font-size: 2.5rem;
-            }
+        .hero-content p {
+            font-size: 1.8rem;
+            color: #f0b400;
+            margin-bottom: 2rem;
+        }
 
-            .hero-content p {
-                font-size: 1.2rem;
-            }
+        .btn-wsp {
+            background: #25D366;
+            color: white;
+            padding: 1rem 2.5rem;
+            font-size: 1.5rem;
+            text-decoration: none;
+            border-radius: 50px;
+            display: inline-block;
+        }
+
+        /* MISIÓN, VISIÓN, VALORES */
+        .filosofia {
+            max-width: 1200px;
+            margin: 4rem auto;
+            padding: 0 2rem;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 2rem;
+        }
+
+        .filosofia-item {
+            background: white;
+            padding: 2rem;
+            border-radius: 15px;
+            text-align: center;
+            border-top: 5px solid #f0b400;
+        }
+
+        footer {
+            background: #0a1a28;
+            color: white;
+            text-align: center;
+            padding: 2rem;
         }
     </style>
 </head>
 <body>
 
-    <header>
-        <div class="navbar">
-            <div class="logo">CARLOS <span>ACARREOS</span></div>
-            <button class="hamburguesa" id="menuToggle">☰</button>
-            <ul class="nav-menu" id="mainMenu">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Cotizaciones</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </div>
-    </header>
+<header>
+    <div class="navbar">
+        <div class="logo">CARLOS <span>ACARREOS</span></div>
+        <input type="checkbox" id="menu-check">
+        <label for="menu-check" class="menu-icono">☰</label>
+        <ul class="nav-menu">
+            <li><a href="#">Inicio</a></li>
+            <li><a href="#">Servicios</a></li>
+            <li><a href="#">Cotizaciones</a></li>
+            <li><a href="#">Contacto</a></li>
+        </ul>
+    </div>
+</header>
 
-    <!-- PORTADA: CAMIÓN CORRECTO -->
-    <section class="hero">
-        <div class="hero-content">
-            <h1>CARLOS ACARREOS</h1>
-            <p>Seguridad · Compromiso · Puntualidad</p>
-            <a href="https://wa.me/573005274172" class="btn-wsp" target="_blank">📱 300 527 4172</a>
-        </div>
-    </section>
+<section class="hero">
+    <div class="hero-content">
+        <h1>CARLOS ACARREOS</h1>
+        <p>Seguridad · Compromiso · Puntualidad</p>
+        <a href="https://wa.me/573005274172" class="btn-wsp">📱 300 527 4172</a>
+    </div>
+</section>
 
-    <!-- MISIÓN, VISIÓN, VALORES -->
-    <section class="filosofia">
-        <div class="filosofia-item">
-            <h2>🎯 Misión</h2>
-            <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
-        </div>
-        <div class="filosofia-item">
-            <h2>👁️ Visión</h2>
-            <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra flota de vehículos y el trato personalizado a cada cliente.</p>
-        </div>
-        <div class="filosofia-item">
-            <h2>⭐ Valores</h2>
-            <ul>
-                <li><strong>Compromiso:</strong> Con tu carga y tiempo</li>
-                <li><strong>Seguridad:</strong> Máxima protección</li>
-                <li><strong>Confianza:</strong> Transparencia total</li>
-                <li><strong>Puntualidad:</strong> Siempre a tiempo</li>
-            </ul>
-        </div>
-    </section>
+<section class="filosofia">
+    <div class="filosofia-item">
+        <h2>🎯 Misión</h2>
+        <p>Brindar soluciones de transporte con la más alta calidad.</p>
+    </div>
+    <div class="filosofia-item">
+        <h2>👁️ Visión</h2>
+        <p>Ser la empresa líder en acarreos de la región.</p>
+    </div>
+    <div class="filosofia-item">
+        <h2>⭐ Valores</h2>
+        <p>Compromiso · Seguridad · Confianza</p>
+    </div>
+</section>
 
-    <section class="servicios">
-        <div class="servicio-item">
-            <h3>🚚 Mudanzas</h3>
-            <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos.</p>
-        </div>
-        <div class="servicio-item">
-            <h3>📦 Acarreos</h3>
-            <p>Servicio puerta a puerta para tus pertenencias. Rapidez y compromiso.</p>
-        </div>
-        <div class="servicio-item">
-            <h3>📍 Cobertura</h3>
-            <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y frontera.</p>
-        </div>
-    </section>
-
-    <footer>
-        <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
-        <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</p>
-    </footer>
-
-    <!-- JAVASCRIPT: MENÚ 100% GARANTIZADO -->
-    <script>
-        (function() {
-            // Esta función se ejecuta inmediatamente
-            const menuBtn = document.getElementById('menuToggle');
-            const menu = document.getElementById('mainMenu');
-
-            if (menuBtn && menu) {
-                console.log('Menú encontrado, activando eventos...');
-
-                menuBtn.addEventListener('click', function(event) {
-                    event.preventDefault();
-                    event.stopPropagation();
-                    menu.classList.toggle('active');
-                    console.log('Menú clickeado, clase active:', menu.classList.contains('active'));
-                });
-
-                // Cerrar al hacer clic en un enlace
-                menu.querySelectorAll('a').forEach(link => {
-                    link.addEventListener('click', function() {
-                        menu.classList.remove('active');
-                    });
-                });
-
-                // Cerrar al hacer clic fuera
-                document.addEventListener('click', function(event) {
-                    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
-                        menu.classList.remove('active');
-                    }
-                });
-            } else {
-                console.error('No se encontraron los elementos del menú');
-            }
-        })();
-    </script>
+<footer>
+    <p>&copy; 2026 Carlos Acarreos · 300 527 4172</p>
+</footer>
 
 </body>
 </html>
