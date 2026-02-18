@@ -13,21 +13,24 @@
         }
 
         body {
-            background-color: #f0f0f0;
+            background-color: #f4f4f4;
         }
 
         /* HEADER */
         header {
             background-color: #0a1f2e;
-            padding: 20px;
             color: white;
+            padding: 15px 20px;
             display: flex;
             justify-content: space-between;
             align-items: center;
+            position: sticky;
+            top: 0;
+            z-index: 100;
         }
 
         .logo {
-            font-size: 24px;
+            font-size: 22px;
             font-weight: bold;
         }
 
@@ -47,27 +50,26 @@
             text-decoration: none;
             font-size: 16px;
             padding: 5px 10px;
+            transition: 0.3s;
         }
 
         .menu li a:hover {
             background-color: #ffc107;
             color: #0a1f2e;
-            border-radius: 5px;
+            border-radius: 4px;
         }
 
-        /* BOTÓN HAMBURGUESA */
+        /* HAMBURGUESA */
         .hamburguesa {
             display: none;
-            font-size: 30px;
+            font-size: 28px;
             color: white;
             cursor: pointer;
-            background: none;
-            border: none;
         }
 
         /* PORTADA */
         .portada {
-            background-image: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/1754539/pexels-photo-1754539.jpeg');
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), url('https://images.pexels.com/photos/1754539/pexels-photo-1754539.jpeg');
             background-size: cover;
             background-position: center;
             height: 400px;
@@ -86,12 +88,12 @@
         }
 
         .portada p {
-            font-size: 24px;
+            font-size: 22px;
             margin-bottom: 20px;
             color: #ffc107;
         }
 
-        .btn {
+        .btn-wsp {
             background-color: #25D366;
             color: white;
             padding: 12px 30px;
@@ -99,67 +101,73 @@
             border-radius: 50px;
             font-size: 18px;
             font-weight: bold;
+            border: none;
+            cursor: pointer;
         }
 
         /* SECCIÓN MISIÓN VISIÓN VALORES */
-        .info {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
+        .filosofia {
             max-width: 1200px;
             margin: 50px auto;
             padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
-        .caja {
+        .item {
             background: white;
             padding: 30px;
             border-radius: 10px;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
             text-align: center;
-            border-top: 5px solid #ffc107;
+            border-top: 4px solid #ffc107;
         }
 
-        .caja h2 {
+        .item h2 {
             color: #0a1f2e;
             margin-bottom: 15px;
         }
 
-        .caja p {
-            color: #555;
+        .item p {
+            color: #666;
             line-height: 1.6;
         }
 
-        .caja ul {
+        .item ul {
             list-style: none;
             text-align: left;
         }
 
-        .caja li {
+        .item li {
             margin: 10px 0;
         }
 
         /* SERVICIOS */
         .servicios {
-            display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 20px;
             max-width: 1200px;
             margin: 50px auto;
             padding: 0 20px;
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 20px;
         }
 
         .servicio {
             background: white;
             padding: 25px;
-            border-radius: 10px;
+            border-radius: 8px;
             text-align: center;
-            box-shadow: 0 0 10px rgba(0,0,0,0.1);
+            box-shadow: 0 2px 8px rgba(0,0,0,0.1);
         }
 
         .servicio h3 {
             color: #0a1f2e;
             margin-bottom: 10px;
+        }
+
+        .servicio p {
+            color: #666;
         }
 
         /* FOOTER */
@@ -169,7 +177,11 @@
             text-align: center;
             padding: 30px;
             margin-top: 40px;
-            border-top: 5px solid #ffc107;
+        }
+
+        footer a {
+            color: #ffc107;
+            text-decoration: none;
         }
 
         /* RESPONSIVE */
@@ -188,13 +200,14 @@
                 flex-direction: column;
                 align-items: center;
                 padding: 20px 0;
+                gap: 15px;
             }
 
             .menu.mostrar {
                 display: flex;
             }
 
-            .info, .servicios {
+            .filosofia, .servicios {
                 grid-template-columns: 1fr;
             }
 
@@ -212,9 +225,7 @@
 
     <header>
         <div class="logo">CARLOS <span>ACARREOS</span></div>
-        
-        <button class="hamburguesa" id="menuBtn">☰</button>
-        
+        <div class="hamburguesa" id="hamburguesa">☰</div>
         <ul class="menu" id="menu">
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Servicios</a></li>
@@ -226,19 +237,19 @@
     <section class="portada">
         <h1>CARLOS ACARREOS</h1>
         <p>Seguridad · Compromiso · Puntualidad</p>
-        <a href="https://wa.me/573005274172" class="btn">📱 300 527 4172</a>
+        <a href="https://wa.me/573005274172" class="btn-wsp">📱 300 527 4172</a>
     </section>
 
-    <section class="info">
-        <div class="caja">
+    <section class="filosofia">
+        <div class="item">
             <h2>Misión</h2>
             <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
         </div>
-        <div class="caja">
+        <div class="item">
             <h2>Visión</h2>
             <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra puntualidad y trato personalizado.</p>
         </div>
-        <div class="caja">
+        <div class="item">
             <h2>Valores</h2>
             <ul>
                 <li>✓ Compromiso</li>
@@ -252,7 +263,7 @@
     <section class="servicios">
         <div class="servicio">
             <h3>🚚 Mudanzas</h3>
-            <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos.</p>
+            <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con total cuidado.</p>
         </div>
         <div class="servicio">
             <h3>📦 Acarreos</h3>
@@ -265,22 +276,26 @@
     </section>
 
     <footer>
-        <p>&copy; 2026 Carlos Acarreos - Todos los derechos reservados</p>
-        <p>Teléfono: 300 527 4172</p>
+        <p>&copy; 2026 Carlos Acarreos</p>
+        <p>📱 <a href="tel:+573005274172">300 527 4172</a></p>
     </footer>
 
     <script>
-        // JavaScript simple que funciona en todos los navegadores
-        const boton = document.getElementById('menuBtn');
+        // JavaScript para el menú
+        const hamburguesa = document.getElementById('hamburguesa');
         const menu = document.getElementById('menu');
 
-        boton.onclick = function() {
-            if (menu.style.display === 'flex') {
-                menu.style.display = 'none';
-            } else {
-                menu.style.display = 'flex';
-            }
-        }
+        hamburguesa.addEventListener('click', function() {
+            menu.classList.toggle('mostrar');
+        });
+
+        // Cerrar menú al hacer clic en un enlace
+        const enlaces = menu.querySelectorAll('a');
+        enlaces.forEach(enlace => {
+            enlace.addEventListener('click', function() {
+                menu.classList.remove('mostrar');
+            });
+        });
     </script>
 
 </body>
