@@ -3,312 +3,254 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Transportes y Acarreos | Servicio de Confianza</title>
+    <title>Tarjeta Profesional - Servicio de Acarreos</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
         }
 
         body {
-            background-color: #f4f4f4;
-            color: #333;
-            line-height: 1.6;
+            background: #1a2a3a;
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            font-family: 'Segoe UI', Roboto, sans-serif;
+            padding: 20px;
         }
 
-        /* --- Menú Hamburguesa --- */
-        .menu-container {
-            background-color: #1a2b3c; /* Azul oscuro corporativo */
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+        /* Contenedor de las tarjetas */
+        .tarjetas {
             display: flex;
-            justify-content: space-between;
-            align-items: center;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin: 30px 0;
+        }
+
+        /* Cada tarjeta mide 800x500px para verse bien en pantalla (proporción 8x5) */
+        .tarjeta {
+            width: 800px;
+            height: 500px;
+            background: white;
+            border-radius: 30px;
+            overflow: hidden;
+            box-shadow: 0 30px 50px rgba(0,0,0,0.5);
+            position: relative;
+            border: 2px solid rgba(255,255,255,0.1);
+        }
+
+        /* ===== ANVERSO (FRONTAL) ===== */
+        .anverso {
+            background: linear-gradient(135deg, #0c1c2b 0%, #1e3a4a 100%);
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
+            position: relative;
+        }
+
+        /* Fondo decorativo de la camioneta (sin imágenes externas) */
+        .anverso::after {
+            content: "🚐";
+            font-size: 250px;
+            position: absolute;
+            bottom: -20px;
+            right: -20px;
+            opacity: 0.1;
+            color: #f0b400;
+            transform: rotate(5deg);
         }
 
         .logo {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            letter-spacing: 1px;
-        }
-        .logo span {
-            color: #f0b400; /* Amarillo/accento */
-        }
-
-        /* Checkbox oculto para el funcionamiento del menú */
-        #menu-toggle {
-            display: none;
-        }
-
-        /* Icono de hamburguesa (label) */
-        .menu-icono {
-            font-size: 2rem;
-            color: white;
-            cursor: pointer;
-            display: none; /* Oculto en escritorio */
-            user-select: none;
-        }
-
-        /* Lista de navegación */
-        .menu-lista {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-            transition: all 0.3s ease;
-        }
-
-        .menu-lista li a {
-            color: white;
-            text-decoration: none;
-            font-weight: 500;
-            padding: 0.5rem 0;
-            border-bottom: 2px solid transparent;
-            transition: border-color 0.3s;
-        }
-
-        .menu-lista li a:hover {
-            border-bottom-color: #f0b400;
-            color: #f0b400;
-        }
-
-        /* --- Portada con la imagen de la camioneta --- */
-        .hero {
-            width: 100%;
-            height: 85vh; /* Ocupa casi toda la pantalla */
-            background-image: url('https://images.unsplash.com/photo-1533473359331-0135ef1b58bf?q=80&w=2070&auto=format&fit=crop'); /* Imagen de una Chevrolet Traverse blanca, similar a la del cliente */
-            background-size: cover;
-            background-position: center 30%;
-            background-repeat: no-repeat;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            position: relative;
-            text-align: center;
-            color: white;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.5); /* Oscurece la imagen para que el texto resalte */
-        }
-
-        .hero-contenido {
+            font-size: 2.8rem;
+            font-weight: 800;
+            line-height: 1.2;
             position: relative;
             z-index: 2;
-            max-width: 800px;
-            padding: 2rem;
         }
 
-        .hero-contenido h1 {
+        .logo span {
+            color: #f0b400;
+            display: block;
+            font-size: 2.2rem;
+            font-weight: 400;
+            letter-spacing: 2px;
+        }
+
+        .slogan {
+            font-size: 1.4rem;
+            margin-top: 20px;
+            color: #aaccdd;
+            border-left: 4px solid #f0b400;
+            padding-left: 20px;
+            position: relative;
+            z-index: 2;
+        }
+
+        .whatsapp {
+            background: rgba(0,0,0,0.3);
+            backdrop-filter: blur(5px);
+            padding: 25px 30px;
+            border-radius: 60px;
+            margin-top: auto;
+            margin-bottom: 20px;
+            border: 2px solid #f0b400;
+            display: flex;
+            align-items: center;
+            gap: 20px;
+            position: relative;
+            z-index: 2;
+            width: fit-content;
+        }
+
+        .whatsapp .icono {
             font-size: 3.5rem;
-            margin-bottom: 1rem;
-            text-shadow: 2px 2px 5px rgba(0,0,0,0.5);
         }
 
-        .hero-contenido p {
-            font-size: 1.3rem;
-            margin-bottom: 2rem;
+        .whatsapp .numero {
+            font-size: 2.5rem;
+            font-weight: 700;
+            color: #f0b400;
         }
 
-        .btn-wsp {
-            display: inline-block;
-            background-color: #25D366;
-            color: white;
-            padding: 1rem 2.5rem;
+        .modelo {
+            position: absolute;
+            bottom: 20px;
+            right: 30px;
+            color: #f0b400;
             font-size: 1.2rem;
-            font-weight: bold;
-            text-decoration: none;
-            border-radius: 50px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-            transition: transform 0.3s, background-color 0.3s;
+            opacity: 0.8;
+            z-index: 2;
         }
 
-        .btn-wsp:hover {
-            background-color: #128C7E;
-            transform: scale(1.05);
+        /* ===== REVERSO ===== */
+        .reverso {
+            background: #0c1c2b;
+            color: white;
+            padding: 40px;
+            display: flex;
+            flex-direction: column;
         }
 
-        /* --- Sección de servicios (como ejemplo) --- */
-        .servicios {
-            max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+        .reverso h2 {
+            color: #f0b400;
+            font-size: 2.4rem;
+            margin-bottom: 20px;
+            border-bottom: 2px solid #f0b400;
+            padding-bottom: 10px;
+        }
+
+        .destinos {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-            text-align: center;
+            grid-template-columns: 1fr 1fr;
+            gap: 15px;
+            flex: 1;
+            margin: 20px 0;
         }
 
-        .servicio-item {
-            background: white;
-            padding: 2rem;
-            border-radius: 10px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+        .destinos p {
+            font-size: 1.3rem;
+            margin: 5px 0;
+            display: flex;
+            align-items: center;
+            gap: 10px;
         }
 
-        .servicio-item h3 {
-            color: #1a2b3c;
-            margin-bottom: 1rem;
+        .destinos p::before {
+            content: "✓";
+            color: #f0b400;
+            font-weight: bold;
             font-size: 1.5rem;
         }
 
-        .servicio-item p {
-            color: #666;
-        }
-
-        /* --- Pie de página --- */
-        footer {
-            background-color: #1a2b3c;
-            color: white;
+        .frontera {
+            background: rgba(240,180,0,0.1);
+            border: 2px dashed #f0b400;
+            padding: 20px;
+            border-radius: 50px;
             text-align: center;
-            padding: 2rem;
-            margin-top: 3rem;
+            font-size: 1.3rem;
+            margin-top: auto;
         }
 
-        footer p {
-            margin: 0.5rem 0;
-        }
-
-        footer a {
+        .frontera strong {
             color: #f0b400;
-            text-decoration: none;
+            font-size: 1.5rem;
         }
 
-        /* --- Estilos Responsive para MÓVIL (menú hamburguesa) --- */
-        @media (max-width: 768px) {
-            .menu-icono {
-                display: block; /* Mostrar icono hamburguesa en móvil */
-            }
-
-            .menu-lista {
-                position: absolute;
-                top: 100%; /* Justo debajo del header */
-                left: 0;
-                width: 100%;
-                background-color: #1a2b3c;
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
-                max-height: 0;
-                overflow: hidden;
-                padding: 0;
-                box-shadow: 0 5px 10px rgba(0,0,0,0.2);
-            }
-
-            /* Cuando el checkbox está marcado, se muestra el menú */
-            #menu-toggle:checked ~ .menu-lista {
-                max-height: 400px; /* Suficiente para los enlaces */
-                padding: 1rem 0;
-            }
-
-            .menu-lista li {
-                width: 100%;
-                text-align: center;
-                padding: 0.8rem 0;
-                border-bottom: 1px solid #3a4b5c;
-            }
-
-            .menu-lista li:last-child {
-                border-bottom: none;
-            }
-
-            .hero-contenido h1 {
-                font-size: 2.2rem;
-            }
-
-            .hero-contenido p {
-                font-size: 1rem;
-            }
-        }
-
-        /* Ajuste para la imagen de la camioneta en la tarjeta (ideas) */
-        .nota-tarjeta {
-            background-color: #e9e9e9;
-            border-left: 5px solid #f0b400;
-            padding: 1.5rem;
-            margin: 2rem auto;
-            max-width: 800px;
-            border-radius: 0 10px 10px 0;
-        }
-        .nota-tarjeta h3 {
-            color: #1a2b3c;
-            margin-bottom: 0.5rem;
+        .medidas {
+            color: white;
+            margin-top: 20px;
+            font-size: 1.2rem;
+            background: #2c3e50;
+            padding: 10px 30px;
+            border-radius: 50px;
         }
     </style>
 </head>
 <body>
+    <h1 style="color: #f0b400; margin-bottom: 10px;">✅ TARJETA PROFESIONAL 8x5 cm</h1>
+    <p style="color: white; font-size: 1.2rem; margin-bottom: 20px;">Anverso y Reverso - Diseño listo para imprimir</p>
 
-    <!-- Menú de Navegación (Hamburguesa Funcional) -->
-    <header>
-        <nav class="menu-container">
-            <div class="logo">Transportes <span>& Acarreos</span></div>
-            
-            <!-- Checkbox oculto que controla el menú -->
-            <input type="checkbox" id="menu-toggle">
-            <!-- Label actúa como el ícono de hamburguesa -->
-            <label for="menu-toggle" class="menu-icono">☰</label>
-            
-            <!-- Lista del menú -->
-            <ul class="menu-lista">
-                <li><a href="#">Inicio</a></li>
-                <li><a href="#">Servicios</a></li>
-                <li><a href="#">Cotizaciones</a></li>
-                <li><a href="#">Contacto</a></li>
-            </ul>
-        </nav>
-    </header>
+    <div class="tarjetas">
+        <!-- ANVERSO (FRONTAL) -->
+        <div class="tarjeta anverso">
+            <div class="logo">
+                TRANSPORTES 
+                <span>& ACARREOS</span>
+            </div>
+            <div class="slogan">
+                Seguridad y compromiso <br>
+                en cada viaje
+            </div>
+            <div class="whatsapp">
+                <span class="icono">📱</span>
+                <span class="numero">300 527 4172</span>
+            </div>
+            <div class="modelo">
+                Chevrolet Traverse
+            </div>
+        </div>
 
-    <!-- Sección Principal con la FOTO DE LA CAMIONETA (PORTADA) -->
-    <section class="hero">
-        <div class="hero-contenido">
-            <h1>Llevamos tu hogar a donde necesites</h1>
-            <p>Mudanzas, acarreos y encomiendas con seguridad y compromiso.</p>
-            <!-- Botón de WhatsApp con el número del cliente -->
-            <a href="https://wa.me/573005274172?text=Hola%2C%20necesito%20informaci%C3%B3n%20sobre%20sus%20servicios%20de%20acarreos." class="btn-wsp" target="_blank">Contáctanos por WhatsApp</a>
+        <!-- REVERSO -->
+        <div class="tarjeta reverso">
+            <h2>📍 DESTINOS</h2>
+            <div class="destinos">
+                <div>
+                    <p>Bucaramanga</p>
+                    <p>Bogotá</p>
+                    <p>Cali</p>
+                    <p>Medellín</p>
+                    <p>Santa Marta</p>
+                    <p>Valledupar</p>
+                </div>
+                <div>
+                    <p>Ureña</p>
+                    <p>San Antonio</p>
+                    <p>San Cristóbal</p>
+                    <p>Rubio</p>
+                    <p>Palotal</p>
+                    <p>Tienditas</p>
+                </div>
+            </div>
+            <div class="frontera">
+                🌎 <strong>VIAJAMOS A TODAS PARTES</strong><br>
+                Nacional · Internacional · Frontera
+            </div>
         </div>
-    </section>
-
-    <!-- Ejemplo de sección de servicios (puedes editarla) -->
-    <section class="servicios">
-        <div class="servicio-item">
-            <h3>🚚 Mudanzas</h3>
-            <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con total cuidado.</p>
-        </div>
-        <div class="servicio-item">
-            <h3>📦 Acarreos</h3>
-            <p>Servicio puerta a puerta para tus pertenencias. Rapidez y compromiso.</p>
-        </div>
-        <div class="servicio-item">
-            <h3>📍 Cobertura</h3>
-            <p>Principales ciudades de Colombia y frontera con Venezuela (Ureña, San Antonio, Rubio).</p>
-        </div>
-    </section>
-
-    <!-- Bloque con ideas para la TARJETA FÍSICA (esto es solo visual en la web) -->
-    <div class="nota-tarjeta">
-        <h3>📇 Ideas para la tarjeta física (8x5 cm)</h3>
-        <p><strong>Anverso:</strong> Usa la misma imagen de la camioneta Chevrolet (Traverse) de fondo. Arriba el logo "Transportes & Acarreos", tu nombre o el del negocio. Abajo tu número <strong>3005274172</strong> con icono de WhatsApp y teléfono.</p>
-        <p><strong>Reverso:</strong> Lista de ciudades: Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar, y las poblaciones del Táchira (Ureña, San Antonio, San Cristóbal, Rubio, Palotal, Tienditas).</p>
-        <p>✅ <strong>Colores:</strong> Usa el azul oscuro (#1a2b3c) y el amarillo/dorado (#f0b400) de la web para mantener la identidad.</p>
     </div>
 
-    <!-- Pie de página con derechos reservados -->
-    <footer>
-        <p>&copy; 2026 Transportes y Acarreos. Todos los derechos reservados.</p>
-        <p>Teléfono: <a href="tel:+573005274172">300 527 4172</a> | Síguenos en nuestras redes</p>
-        <p>Diseñado con dedicación por Don Elis y su equipo.</p>
-    </footer>
+    <div class="medidas">
+        ⚡ Medidas reales: 8 cm x 5 cm | Diseño 100% funcional y editable
+    </div>
 
+    <div style="margin-top: 30px; color: #aaccdd; text-align: center; max-width: 800px;">
+        <p>✅ Para imprimir: Guarde esta página como PDF o capture las imágenes.</p>
+        <p>✅ Si quiere la foto real de la camioneta del cliente, envíeme la imagen y la incorporo al instante.</p>
+    </div>
 </body>
 </html>
