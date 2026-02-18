@@ -2,37 +2,41 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Carlos Acarreos · Transporte de Confianza</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Carlos Acarreos · Transporte de Confianza</title>
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', Arial, sans-serif;
+      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
     }
 
     :root {
-      --azul: #0a1a28;
-      --amarillo: #f0b400;
-      --blanco: #ffffff;
+      --azul-profundo: #0a1a28;
+      --amarillo-oro: #f0b400;
+      --gris-claro: #f4f7fc;
+      --texto-oscuro: #222;
     }
 
     body {
-      background: #f0f0f0;
+      background-color: var(--gris-claro);
+      color: var(--texto-oscuro);
+      line-height: 1.5;
     }
 
     /* HEADER */
     header {
-      background: var(--azul);
-      padding: 15px 20px;
+      background-color: var(--azul-profundo);
+      padding: 1rem 2rem;
       position: sticky;
       top: 0;
-      z-index: 100;
+      z-index: 1000;
+      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
     }
 
     .nav-container {
-      max-width: 1000px;
+      max-width: 1200px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
@@ -41,399 +45,402 @@
 
     .logo {
       color: white;
-      font-size: 1.5rem;
-      font-weight: bold;
+      font-size: 1.8rem;
+      font-weight: 700;
     }
 
     .logo span {
-      color: var(--amarillo);
+      color: var(--amarillo-oro);
     }
 
-    .menu {
-      list-style: none;
+    .nav-links {
       display: flex;
-      gap: 25px;
+      gap: 2rem;
+      list-style: none;
     }
 
-    .menu li a {
+    .nav-links a {
       color: white;
       text-decoration: none;
-      font-size: 1rem;
+      font-weight: 500;
+      transition: color 0.2s;
     }
 
-    .menu li a:hover {
-      color: var(--amarillo);
+    .nav-links a:hover {
+      color: var(--amarillo-oro);
     }
 
-    .hamburguesa {
+    .menu-toggle {
       display: none;
-      font-size: 30px;
-      color: white;
-      cursor: pointer;
       background: none;
       border: none;
+      color: white;
+      font-size: 2rem;
+      cursor: pointer;
     }
 
-    /* HERO CON CAMIÓN EN CSS */
+    /* HERO */
     .hero {
-      max-width: 1000px;
-      margin: 30px auto;
-      background: white;
-      border-radius: 20px;
-      overflow: hidden;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
-      border: 2px solid var(--amarillo);
-    }
-
-    .camion-css {
-      background: linear-gradient(145deg, #1e3a4a, #0a1a28);
-      padding: 40px;
-      display: flex;
-      justify-content: center;
+      max-width: 1200px;
+      margin: 3rem auto;
+      padding: 0 2rem;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
       align-items: center;
-      min-height: 250px;
-    }
-
-    /* DIBUJO DEL CAMIÓN CON CSS PURO */
-    .camion-dibujo {
-      position: relative;
-      width: 400px;
-      height: 150px;
-    }
-
-    /* Caja trasera */
-    .caja {
-      position: absolute;
-      width: 220px;
-      height: 70px;
-      background: var(--amarillo);
-      right: 0;
-      top: 20px;
-      border-radius: 10px;
-      border: 3px solid white;
-    }
-
-    /* Cabina */
-    .cabina {
-      position: absolute;
-      width: 90px;
-      height: 60px;
-      background: var(--amarillo);
-      left: 40px;
-      top: 30px;
-      border-radius: 10px;
-      border: 3px solid white;
-    }
-
-    /* Ventana */
-    .ventana {
-      position: absolute;
-      width: 30px;
-      height: 25px;
-      background: var(--azul);
-      left: 55px;
-      top: 35px;
-      border-radius: 5px;
-      border: 2px solid white;
-    }
-
-    /* Ruedas */
-    .rueda {
-      position: absolute;
-      width: 40px;
-      height: 40px;
-      background: #333;
-      border-radius: 50%;
-      border: 4px solid white;
-      bottom: 0;
-    }
-
-    .rueda-izq {
-      left: 80px;
-    }
-
-    .rueda-der {
-      right: 60px;
-    }
-
-    /* Llantas */
-    .rueda::after {
-      content: "";
-      position: absolute;
-      width: 20px;
-      height: 20px;
-      background: #111;
-      border-radius: 50%;
-      top: 6px;
-      left: 6px;
-      border: 2px solid #666;
-    }
-
-    /* Luces */
-    .luz {
-      position: absolute;
-      width: 10px;
-      height: 10px;
-      background: #ff0;
-      border-radius: 50%;
-      left: 30px;
-      top: 45px;
-    }
-
-    .luz-roja {
-      background: red;
-      right: -10px;
-      left: auto;
-      top: 45px;
-    }
-
-    .hero-content {
-      padding: 30px;
-      text-align: center;
     }
 
     .hero-content h1 {
-      font-size: 2.5rem;
-      color: var(--azul);
-      margin-bottom: 10px;
+      font-size: 3rem;
+      color: var(--azul-profundo);
+      line-height: 1.2;
     }
 
-    .hero-content p {
-      font-size: 1.2rem;
-      color: var(--amarillo);
-      font-weight: bold;
-      margin-bottom: 20px;
+    .hero-content .tagline {
+      font-size: 1.4rem;
+      color: var(--amarillo-oro);
+      font-weight: 600;
+      margin: 1rem 0 1.5rem;
     }
 
     .btn {
-      background: #25D366;
-      color: white;
-      padding: 12px 30px;
-      text-decoration: none;
-      border-radius: 50px;
-      font-size: 1.2rem;
-      font-weight: bold;
       display: inline-block;
-      border: 2px solid var(--amarillo);
+      background-color: #25D366;
+      color: white;
+      padding: 0.8rem 2rem;
+      border-radius: 40px;
+      text-decoration: none;
+      font-weight: 600;
+      font-size: 1.2rem;
+      border: 2px solid var(--amarillo-oro);
+      transition: transform 0.2s;
     }
 
-    /* SECCIONES */
-    .seccion {
-      max-width: 1000px;
-      margin: 40px auto;
-      padding: 0 20px;
+    .btn:hover {
+      transform: scale(1.02);
+      background-color: #128C7E;
     }
 
-    .seccion h2 {
-      color: var(--azul);
-      font-size: 2rem;
+    .hero-image {
+      background: linear-gradient(145deg, var(--azul-profundo), #1e3a4a);
+      border-radius: 30px;
+      padding: 2rem;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      box-shadow: 0 20px 30px rgba(0,0,0,0.2);
+    }
+
+    /* Camión SVG (dibujo) */
+    .truck-svg {
+      width: 100%;
+      max-width: 400px;
+      height: auto;
+    }
+
+    /* SECCIONES GENERALES */
+    .section {
+      max-width: 1200px;
+      margin: 4rem auto;
+      padding: 0 2rem;
+    }
+
+    .section-title {
+      font-size: 2.2rem;
+      color: var(--azul-profundo);
       text-align: center;
-      margin-bottom: 30px;
-      border-bottom: 3px solid var(--amarillo);
-      padding-bottom: 10px;
+      margin-bottom: 2rem;
+      border-bottom: 4px solid var(--amarillo-oro);
+      padding-bottom: 0.5rem;
+      display: inline-block;
     }
 
-    .grid {
+    .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
+      gap: 2rem;
+      margin-top: 2rem;
     }
 
     .card {
       background: white;
-      padding: 25px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
-      text-align: center;
-      border-top: 5px solid var(--amarillo);
+      padding: 2rem;
+      border-radius: 20px;
+      box-shadow: 0 8px 20px rgba(0,0,0,0.1);
+      border-top: 6px solid var(--amarillo-oro);
+      transition: transform 0.2s;
+    }
+
+    .card:hover {
+      transform: translateY(-5px);
     }
 
     .card h3 {
-      color: var(--azul);
-      font-size: 1.5rem;
-      margin-bottom: 15px;
+      color: var(--azul-profundo);
+      font-size: 1.6rem;
+      margin-bottom: 1rem;
     }
 
     .card ul {
       list-style: none;
-      text-align: left;
     }
 
     .card li {
-      margin: 10px 0;
+      margin: 0.8rem 0;
       display: flex;
       align-items: center;
-      gap: 8px;
+      gap: 0.5rem;
     }
 
     .card li::before {
       content: "✓";
-      color: var(--amarillo);
+      color: var(--amarillo-oro);
       font-weight: bold;
+      font-size: 1.2rem;
     }
 
+    /* SECCIÓN QR - NUEVA */
+    .qr-section {
+      background: linear-gradient(135deg, #f8f4e8, #fff);
+      border-radius: 40px;
+      padding: 3rem 2rem;
+      border: 3px solid var(--amarillo-oro);
+    }
+
+    .qr-container {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 3rem;
+      align-items: center;
+    }
+
+    .qr-code {
+      text-align: center;
+    }
+
+    .qr-code img {
+      max-width: 250px;
+      height: auto;
+      border-radius: 20px;
+      box-shadow: 0 15px 30px rgba(0,0,0,0.2);
+      border: 4px solid var(--azul-profundo);
+    }
+
+    .qr-text h3 {
+      font-size: 2rem;
+      color: var(--azul-profundo);
+      margin-bottom: 1rem;
+    }
+
+    .qr-text p {
+      font-size: 1.2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .qr-text .highlight {
+      color: var(--amarillo-oro);
+      font-weight: 700;
+      font-size: 1.5rem;
+    }
+
+    /* CONTACTO */
     .contacto-box {
       background: white;
-      padding: 30px;
-      border-radius: 15px;
-      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      padding: 2rem;
+      border-radius: 30px;
       text-align: center;
-      border: 2px solid var(--amarillo);
+      border: 3px solid var(--amarillo-oro);
+      max-width: 600px;
+      margin: 0 auto;
     }
 
+    .contacto-box p {
+      margin: 1rem 0;
+      font-size: 1.3rem;
+    }
+
+    .contacto-box strong {
+      color: var(--azul-profundo);
+      font-size: 1.8rem;
+    }
+
+    /* FOOTER */
     footer {
-      background: var(--azul);
+      background: var(--azul-profundo);
       color: white;
       text-align: center;
-      padding: 30px;
-      margin-top: 40px;
-      border-top: 5px solid var(--amarillo);
+      padding: 2rem;
+      margin-top: 4rem;
+      border-top: 5px solid var(--amarillo-oro);
     }
 
     footer a {
-      color: var(--amarillo);
+      color: var(--amarillo-oro);
       text-decoration: none;
     }
 
-    @media (max-width: 768px) {
-      .hamburguesa {
+    /* RESPONSIVE */
+    @media (max-width: 900px) {
+      .hero, .qr-container {
+        grid-template-columns: 1fr;
+      }
+
+      .grid-3 {
+        grid-template-columns: 1fr;
+      }
+
+      .menu-toggle {
         display: block;
       }
 
-      .menu {
+      .nav-links {
         display: none;
         position: absolute;
         top: 70px;
         left: 0;
         width: 100%;
-        background: var(--azul);
+        background: var(--azul-profundo);
         flex-direction: column;
         align-items: center;
-        padding: 20px 0;
-        gap: 15px;
+        padding: 2rem 0;
+        gap: 1rem;
       }
 
-      .menu.mostrar {
+      .nav-links.active {
         display: flex;
-      }
-
-      .grid {
-        grid-template-columns: 1fr;
-      }
-
-      .camion-dibujo {
-        transform: scale(0.8);
       }
     }
   </style>
 </head>
 <body>
 
-  <header>
-    <div class="nav-container">
-      <div class="logo">CARLOS <span>ACARREOS</span></div>
-      <button class="hamburguesa" id="menuBtn">☰</button>
-      <ul class="menu" id="menu">
-        <li><a href="#inicio">Inicio</a></li>
-        <li><a href="#filosofia">Filosofía</a></li>
-        <li><a href="#servicios">Servicios</a></li>
-        <li><a href="#contacto">Contacto</a></li>
+<header>
+  <div class="nav-container">
+    <div class="logo">CARLOS <span>ACARREOS</span></div>
+    <button class="menu-toggle" id="menuToggle">☰</button>
+    <ul class="nav-links" id="navLinks">
+      <li><a href="#inicio">Inicio</a></li>
+      <li><a href="#filosofia">Filosofía</a></li>
+      <li><a href="#servicios">Servicios</a></li>
+      <li><a href="#qr">QR</a></li>
+      <li><a href="#contacto">Contacto</a></li>
+    </ul>
+  </div>
+</header>
+
+<main id="inicio">
+  <section class="hero">
+    <div class="hero-content">
+      <h1>CARLOS ACARREOS</h1>
+      <p class="tagline">Seguridad · Compromiso · Puntualidad</p>
+      <a href="https://wa.me/573005274172" class="btn" target="_blank">📱 WhatsApp 300 527 4172</a>
+    </div>
+    <div class="hero-image">
+      <!-- Camión SVG para que siempre se vea -->
+      <svg class="truck-svg" viewBox="0 0 400 200" fill="none" xmlns="http://www.w3.org/2000/svg">
+        <rect x="80" y="60" width="220" height="70" rx="10" fill="#f0b400" stroke="#ffffff" stroke-width="4"/>
+        <rect x="30" y="40" width="70" height="50" rx="8" fill="#f0b400" stroke="#ffffff" stroke-width="4"/>
+        <rect x="45" y="50" width="25" height="20" fill="#0a1a28"/>
+        <circle cx="120" cy="140" r="25" fill="#333" stroke="#ffffff" stroke-width="4"/>
+        <circle cx="280" cy="140" r="25" fill="#333" stroke="#ffffff" stroke-width="4"/>
+        <circle cx="120" cy="140" r="12" fill="#111"/>
+        <circle cx="280" cy="140" r="12" fill="#111"/>
+        <circle cx="25" cy="75" r="6" fill="#ffff00"/>
+        <circle cx="25" cy="100" r="6" fill="#ff0000"/>
+      </svg>
+    </div>
+  </section>
+</main>
+
+<section id="filosofia" class="section">
+  <h2 class="section-title">NUESTRA FILOSOFÍA</h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>🎯 Misión</h3>
+      <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
+    </div>
+    <div class="card">
+      <h3>👁️ Visión</h3>
+      <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra puntualidad y trato personalizado.</p>
+    </div>
+    <div class="card">
+      <h3>⭐ Valores</h3>
+      <ul>
+        <li><strong>Compromiso:</strong> Con tu carga y tiempo</li>
+        <li><strong>Seguridad:</strong> Máxima protección</li>
+        <li><strong>Confianza:</strong> Transparencia total</li>
+        <li><strong>Puntualidad:</strong> Siempre a tiempo</li>
       </ul>
     </div>
-  </header>
+  </div>
+</section>
 
-  <main id="inicio">
-    <section class="hero">
-      <!-- CAMIÓN DIBUJADO CON CSS -->
-      <div class="camion-css">
-        <div class="camion-dibujo">
-          <div class="caja"></div>
-          <div class="cabina"></div>
-          <div class="ventana"></div>
-          <div class="rueda rueda-izq"></div>
-          <div class="rueda rueda-der"></div>
-          <div class="luz"></div>
-          <div class="luz luz-roja"></div>
-        </div>
-      </div>
-      <div class="hero-content">
-        <h1>CARLOS ACARREOS</h1>
-        <p>Seguridad · Compromiso · Puntualidad</p>
-        <a href="https://wa.me/573005274172" class="btn">📱 300 527 4172</a>
-      </div>
-    </section>
-  </main>
-
-  <section id="filosofia" class="seccion">
-    <h2>NUESTRA FILOSOFÍA</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>🎯 Misión</h3>
-        <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
-      </div>
-      <div class="card">
-        <h3>👁️ Visión</h3>
-        <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra puntualidad y trato personalizado.</p>
-      </div>
-      <div class="card">
-        <h3>⭐ Valores</h3>
-        <ul>
-          <li><strong>Compromiso:</strong> Con tu carga y tiempo</li>
-          <li><strong>Seguridad:</strong> Máxima protección</li>
-          <li><strong>Confianza:</strong> Transparencia total</li>
-          <li><strong>Puntualidad:</strong> Siempre a tiempo</li>
-        </ul>
-      </div>
+<section id="servicios" class="section">
+  <h2 class="section-title">SERVICIOS</h2>
+  <div class="grid-3">
+    <div class="card">
+      <h3>🚚 Mudanzas</h3>
+      <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con total cuidado.</p>
     </div>
-  </section>
-
-  <section id="servicios" class="seccion">
-    <h2>SERVICIOS</h2>
-    <div class="grid">
-      <div class="card">
-        <h3>🚚 Mudanzas</h3>
-        <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con total cuidado.</p>
-      </div>
-      <div class="card">
-        <h3>📦 Acarreos</h3>
-        <p>Servicio puerta a puerta para tus pertenencias. Rapidez y compromiso.</p>
-      </div>
-      <div class="card">
-        <h3>📍 Cobertura</h3>
-        <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y toda la frontera.</p>
-      </div>
+    <div class="card">
+      <h3>📦 Acarreos</h3>
+      <p>Servicio puerta a puerta para tus pertenencias. Rapidez y compromiso.</p>
     </div>
-  </section>
-
-  <section id="contacto" class="seccion">
-    <h2>CONTACTO</h2>
-    <div class="contacto-box">
-      <p><strong>Carlos Acarreos</strong></p>
-      <p>📱 300 527 4172</p>
-      <p>📍 Atención 24/7</p>
-      <p>Disponible en WhatsApp y llamadas</p>
+    <div class="card">
+      <h3>📍 Cobertura</h3>
+      <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y toda la frontera.</p>
     </div>
-  </section>
+  </div>
+</section>
 
-  <footer>
-    <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
-    <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</p>
-  </footer>
+<!-- NUEVA SECCIÓN: CÓDIGO QR -->
+<section id="qr" class="section qr-section">
+  <div class="qr-container">
+    <div class="qr-code">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://acarreoscarlos.netlify.app/" alt="Código QR de Carlos Acarreos">
+    </div>
+    <div class="qr-text">
+      <h3>📲 ESCANEA Y CONTACTA</h3>
+      <p>Guarda nuestro código QR en tu celular. Escanéalo con la cámara para acceder al sitio web al instante y tener todos nuestros datos siempre a mano.</p>
+      <p class="highlight">¡Escanea, comparte y contrata!</p>
+      <p>Disponible 24/7 para ti.</p>
+    </div>
+  </div>
+</section>
 
-  <script>
-    const menuBtn = document.getElementById('menuBtn');
-    const menu = document.getElementById('menu');
+<section id="contacto" class="section">
+  <h2 class="section-title">CONTACTO</h2>
+  <div class="contacto-box">
+    <p><strong>Carlos Acarreos</strong></p>
+    <p>📱 <strong>300 527 4172</strong></p>
+    <p>📍 Atención 24/7</p>
+    <p>Disponible en WhatsApp y llamadas</p>
+    <a href="https://wa.me/573005274172" class="btn" style="margin-top: 1rem;">📱 Enviar WhatsApp</a>
+  </div>
+</section>
 
-    menuBtn.addEventListener('click', () => {
-      menu.classList.toggle('mostrar');
+<footer>
+  <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
+  <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7 a tu servicio</p>
+  <p>🚛 Transporte de carga con responsabilidad</p>
+</footer>
+
+<script>
+  // Menú hamburguesa
+  const toggleBtn = document.getElementById('menuToggle');
+  const navMenu = document.getElementById('navLinks');
+
+  toggleBtn.addEventListener('click', () => {
+    navMenu.classList.toggle('active');
+  });
+
+  // Cerrar menú al hacer clic en un enlace
+  document.querySelectorAll('.nav-links a').forEach(link => {
+    link.addEventListener('click', () => {
+      navMenu.classList.remove('active');
     });
-
-    document.querySelectorAll('.menu a').forEach(link => {
-      link.addEventListener('click', () => {
-        menu.classList.remove('mostrar');
-      });
-    });
-  </script>
+  });
+</script>
 
 </body>
 </html>
