@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tarjeta Carlos - Camión de Acarreos</title>
+    <title>Tarjeta Digital - Servicio de Acarreos (Carlos)</title>
     <style>
         * {
             margin: 0;
@@ -12,265 +12,277 @@
         }
 
         body {
-            background: #1e2b3a;
+            background: linear-gradient(135deg, #0f2027, #203a43, #2c5364);
             min-height: 100vh;
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
-            font-family: 'Segoe UI', Roboto, sans-serif;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
             padding: 20px;
         }
 
-        .instruccion {
+        /* Título explicativo */
+        .titulo-obra {
             color: #f0b400;
-            font-size: 1.5rem;
+            font-size: 2.2rem;
+            font-weight: 700;
+            text-shadow: 2px 2px 0 #000;
             margin-bottom: 20px;
             text-align: center;
-            background: #2c3e50;
-            padding: 15px 30px;
+            background: rgba(0,0,0,0.5);
+            padding: 15px 40px;
             border-radius: 60px;
+            backdrop-filter: blur(5px);
+            border: 2px solid #f0b400;
         }
 
-        /* Contenedor de tarjetas */
-        .tarjetas {
+        /* Contenedor de la tarjeta digital (estilo Netflix) */
+        .tarjeta-digital {
+            width: 900px;
+            max-width: 95%;
+            background: #0b1c28;
+            border-radius: 50px;
+            overflow: hidden;
+            box-shadow: 0 30px 60px rgba(0,0,0,0.7), 0 0 0 2px #f0b400 inset;
+            margin: 30px 0;
+            border: 4px solid rgba(240,180,0,0.3);
+        }
+
+        /* Mitad superior (anverso digital ampliado) */
+        .anverso-digital {
+            background: linear-gradient(145deg, #0a1925, #1c3445);
+            padding: 60px 50px 40px 50px;
+            position: relative;
+            border-bottom: 3px dashed #f0b400;
             display: flex;
             flex-wrap: wrap;
-            justify-content: center;
-            gap: 30px;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        /* Columna izquierda (texto) */
+        .info-principal {
+            flex: 2;
+            min-width: 300px;
+            z-index: 2;
+        }
+
+        .info-principal h1 {
+            color: white;
+            font-size: 4rem;
+            font-weight: 800;
+            line-height: 1.1;
+            text-transform: uppercase;
+            margin-bottom: 20px;
+        }
+
+        .info-principal h1 span {
+            color: #f0b400;
+            display: block;
+            font-size: 2.8rem;
+            font-weight: 400;
+            letter-spacing: 3px;
+        }
+
+        .slogan-digital {
+            color: #ccddee;
+            font-size: 1.8rem;
+            border-left: 8px solid #f0b400;
+            padding-left: 25px;
             margin: 30px 0;
         }
 
-        /* Tarjeta individual 8x5 (800x500px para vista previa) */
-        .tarjeta {
-            width: 800px;
-            height: 500px;
-            background: white;
-            border-radius: 30px;
-            overflow: hidden;
-            box-shadow: 0 30px 50px rgba(0,0,0,0.6);
-            position: relative;
-            border: 2px solid rgba(255,215,0,0.3);
-        }
-
-        /* ===== ANVERSO ===== */
-        .anverso {
-            background: linear-gradient(145deg, #0a1a28 0%, #1c3343 100%);
-            color: white;
-            padding: 35px;
-            display: flex;
-            flex-direction: column;
-            position: relative;
-        }
-
-        /* Camión SVG (dibujo vectorial) - CAMIÓN CHICO, NO CAMIONETA */
-        .camion-svg {
-            position: absolute;
-            bottom: 30px;
-            right: 30px;
-            width: 280px;
-            height: auto;
-            opacity: 0.25;
-            z-index: 1;
-        }
-
-        .logo {
-            font-size: 2.6rem;
-            font-weight: 800;
-            line-height: 1.2;
-            position: relative;
-            z-index: 2;
-        }
-
-        .logo span {
-            color: #f0b400;
-            font-size: 2rem;
-            font-weight: 400;
-            display: block;
-        }
-
-        .slogan {
-            font-size: 1.5rem;
-            margin-top: 20px;
-            border-left: 5px solid #f0b400;
-            padding-left: 20px;
-            color: #ccddee;
-            position: relative;
-            z-index: 2;
-        }
-
-        .whatsapp {
+        .whatsapp-digital {
             background: rgba(0,0,0,0.4);
-            backdrop-filter: blur(5px);
-            padding: 20px 30px;
-            border-radius: 60px;
-            margin-top: auto;
-            margin-bottom: 30px;
-            border: 2px solid #f0b400;
-            display: flex;
+            backdrop-filter: blur(10px);
+            padding: 20px 40px;
+            border-radius: 80px;
+            display: inline-flex;
             align-items: center;
-            gap: 20px;
-            position: relative;
-            z-index: 2;
-            width: fit-content;
+            gap: 25px;
+            border: 3px solid #f0b400;
+            margin-top: 20px;
         }
 
-        .whatsapp .icono {
-            font-size: 3rem;
-        }
-
-        .whatsapp .numero {
-            font-size: 2.4rem;
+        .whatsapp-digital .numero {
+            font-size: 3.2rem;
             font-weight: 700;
             color: #f0b400;
         }
 
-        /* ===== REVERSO ===== */
-        .reverso {
-            background: #0a1a28;
-            color: white;
-            padding: 35px;
+        .whatsapp-digital .icono {
+            font-size: 4rem;
+        }
+
+        /* Columna derecha (CAMIONCITO GRANDE) */
+        .camion-digital {
+            flex: 1;
+            min-width: 250px;
             display: flex;
-            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            position: relative;
+            z-index: 2;
         }
 
-        .reverso h2 {
-            color: #f0b400;
-            font-size: 2.4rem;
-            margin-bottom: 20px;
-            border-bottom: 2px solid #f0b400;
-            padding-bottom: 10px;
+        /* SVG del camión chico, pero GRANDE */
+        .camion-svg-digital {
+            width: 100%;
+            max-width: 350px;
+            height: auto;
+            filter: drop-shadow(0 10px 15px rgba(0,0,0,0.5));
         }
 
-        .destinos-grid {
+        /* Mitad inferior (reverso digital: destinos) */
+        .reverso-digital {
+            background: #0a1925;
+            padding: 50px;
             display: grid;
             grid-template-columns: 1fr 1fr;
-            gap: 15px 30px;
-            flex: 1;
-            margin: 15px 0;
+            gap: 30px;
+            color: white;
         }
 
-        .destinos-grid p {
-            font-size: 1.3rem;
-            margin: 5px 0;
+        .columna-destinos h2 {
+            color: #f0b400;
+            font-size: 2.2rem;
+            margin-bottom: 30px;
+            border-bottom: 3px solid #f0b400;
+            padding-bottom: 15px;
+        }
+
+        .columna-destinos p {
+            font-size: 1.5rem;
+            margin: 15px 0;
             display: flex;
             align-items: center;
-            gap: 8px;
+            gap: 15px;
         }
 
-        .destinos-grid p::before {
+        .columna-destinos p::before {
             content: "✓";
             color: #f0b400;
             font-weight: bold;
-            font-size: 1.5rem;
+            font-size: 2rem;
         }
 
-        .frontera {
+        .frontera-digital {
+            grid-column: span 2;
             background: rgba(240,180,0,0.1);
-            border: 2px dashed #f0b400;
-            padding: 15px;
-            border-radius: 40px;
+            border: 3px dashed #f0b400;
+            padding: 30px;
+            border-radius: 60px;
             text-align: center;
-            font-size: 1.3rem;
-            margin-top: auto;
+            font-size: 1.8rem;
+            margin-top: 20px;
         }
 
-        .frontera strong {
+        .frontera-digital strong {
+            color: #f0b400;
+            font-size: 2.2rem;
+        }
+
+        .pie-digital {
+            text-align: center;
+            padding: 30px;
+            background: #051016;
             color: #f0b400;
             font-size: 1.5rem;
+            border-top: 2px solid #f0b400;
         }
 
-        .medidas {
-            color: white;
-            margin-top: 30px;
-            font-size: 1.2rem;
-            background: #2c3e50;
-            padding: 10px 30px;
-            border-radius: 50px;
+        @media (max-width: 700px) {
+            .anverso-digital {
+                flex-direction: column;
+                text-align: center;
+                padding: 30px;
+            }
+            .info-principal h1 {
+                font-size: 3rem;
+            }
         }
     </style>
 </head>
 <body>
-    <div class="instruccion">
-        🚚 TARJETA DE CARLOS - CAMIÓN DE CARGA (CORREGIDO) 🚚
+    <div class="titulo-obra">
+        🚚 TARJETA DIGITAL DE CARLOS (CON CAMIÓN CHICO) 🚚
     </div>
 
-    <div class="tarjetas">
-        <!-- ANVERSO con CAMIÓN CHICO -->
-        <div class="tarjeta anverso">
-            <!-- DIBUJO DEL CAMIÓN (SVG) - ESTO ES UN CAMIÓN, NO CAMIONETA -->
-            <svg class="camion-svg" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <!-- Cabina -->
-                <rect x="20" y="35" width="45" height="30" rx="6" fill="#f0b400" stroke="#ffffff" stroke-width="2"/>
-                <!-- Ventana -->
-                <rect x="25" y="40" width="15" height="12" fill="#0a1a28"/>
-                <!-- Caja/carga trasera -->
-                <rect x="65" y="25" width="80" height="40" rx="4" fill="#f0b400" fill-opacity="0.7" stroke="#ffffff" stroke-width="2"/>
-                <!-- Ruedas -->
-                <circle cx="45" cy="70" r="12" fill="#333" stroke="#ffffff" stroke-width="2"/>
-                <circle cx="120" cy="70" r="12" fill="#333" stroke="#ffffff" stroke-width="2"/>
-                <!-- Llantas interiores -->
-                <circle cx="45" cy="70" r="6" fill="#111"/>
-                <circle cx="120" cy="70" r="6" fill="#111"/>
-                <!-- Línea de velocidad (opcional) -->
-                <path d="M150 45 L170 35 L175 45" stroke="#ffffff" stroke-width="3" fill="none"/>
-            </svg>
-
-            <div class="logo">
-                CARLOS <span>ACARREOS</span>
+    <div class="tarjeta-digital">
+        <!-- PARTE SUPERIOR: ANVERSO DIGITAL con CAMIÓN -->
+        <div class="anverso-digital">
+            <div class="info-principal">
+                <h1>
+                    CARLOS
+                    <span>ACARREOS</span>
+                </h1>
+                <div class="slogan-digital">
+                    Seguridad y compromiso <br> en cada carga
+                </div>
+                <div class="whatsapp-digital">
+                    <span class="icono">📱</span>
+                    <span class="numero">300 527 4172</span>
+                </div>
+                <div style="margin-top: 20px; color: #f0b400; font-size: 1.4rem;">
+                    ⚡ Camión NPR · Carga liviana
+                </div>
             </div>
-            <div class="slogan">
-                Tu carga segura <br> a donde sea
-            </div>
-            <div class="whatsapp">
-                <span class="icono">📱</span>
-                <span class="numero">300 527 4172</span>
-            </div>
-            <!-- Texto pequeño indicando vehículo -->
-            <div style="position: absolute; bottom: 20px; left: 30px; color: #f0b400; font-size: 1rem; z-index: 2;">
-                Camión NPR · Carga liviana
+            <div class="camion-digital">
+                <!-- SVG CAMIÓN CHICO (idéntico al anterior, pero más grande) -->
+                <svg class="camion-svg-digital" viewBox="0 0 200 100" fill="none" xmlns="http://www.w3.org/2000/svg">
+                    <!-- Cabina -->
+                    <rect x="20" y="35" width="45" height="30" rx="6" fill="#f0b400" stroke="#ffffff" stroke-width="2"/>
+                    <!-- Ventana -->
+                    <rect x="25" y="40" width="15" height="12" fill="#0a1a28"/>
+                    <!-- Caja/carga trasera -->
+                    <rect x="65" y="25" width="80" height="40" rx="4" fill="#f0b400" fill-opacity="0.7" stroke="#ffffff" stroke-width="2"/>
+                    <!-- Ruedas -->
+                    <circle cx="45" cy="70" r="12" fill="#333" stroke="#ffffff" stroke-width="2"/>
+                    <circle cx="120" cy="70" r="12" fill="#333" stroke="#ffffff" stroke-width="2"/>
+                    <!-- Llantas interiores -->
+                    <circle cx="45" cy="70" r="6" fill="#111"/>
+                    <circle cx="120" cy="70" r="6" fill="#111"/>
+                    <!-- Línea de velocidad -->
+                    <path d="M150 45 L170 35 L175 45" stroke="#ffffff" stroke-width="3" fill="none"/>
+                </svg>
             </div>
         </div>
 
-        <!-- REVERSO (igual que antes, con los destinos) -->
-        <div class="tarjeta reverso">
-            <h2>📍 DESTINOS</h2>
-            <div class="destinos-grid">
-                <div>
-                    <p>Bucaramanga</p>
-                    <p>Bogotá</p>
-                    <p>Cali</p>
-                    <p>Medellín</p>
-                    <p>Santa Marta</p>
-                    <p>Valledupar</p>
-                </div>
-                <div>
-                    <p>Ureña</p>
-                    <p>San Antonio</p>
-                    <p>San Cristóbal</p>
-                    <p>Rubio</p>
-                    <p>Palotal</p>
-                    <p>Tienditas</p>
-                </div>
+        <!-- PARTE INFERIOR: REVERSO DIGITAL (destinos) -->
+        <div class="reverso-digital">
+            <div class="columna-destinos">
+                <h2>🇨🇴 Colombia</h2>
+                <p>Bucaramanga</p>
+                <p>Bogotá</p>
+                <p>Cali</p>
+                <p>Medellín</p>
+                <p>Santa Marta</p>
+                <p>Valledupar</p>
             </div>
-            <div class="frontera">
-                🌎 <strong>VIAJAMOS A TODAS PARTES</strong><br>
+            <div class="columna-destinos">
+                <h2>🇻🇪 Frontera</h2>
+                <p>Ureña</p>
+                <p>San Antonio</p>
+                <p>San Cristóbal</p>
+                <p>Rubio</p>
+                <p>Palotal</p>
+                <p>Tienditas</p>
+            </div>
+            <div class="frontera-digital">
+                🌎 <strong>VIAJAMOS A TODAS PARTES</strong> 🌎<br>
                 Nacional · Internacional · Frontera
             </div>
-            <!-- Pie pequeño -->
-            <div style="margin-top: 10px; text-align: right; color: #f0b400; font-size: 1rem;">
-                www.carlosacarreos.com
-            </div>
+        </div>
+
+        <!-- PIE DE PÁGINA DIGITAL -->
+        <div class="pie-digital">
+            www.carlosacarreos.com · 24/7 a tu servicio
         </div>
     </div>
 
-    <div class="medidas">
-        ⚡ Medidas exactas: 8 cm x 5 cm | Anverso: Camión chico (NPR) | Reverso: Destinos
-    </div>
-
-    <div style="margin-top: 30px; color: #aaccdd; text-align: center; max-width: 800px; background: #1e3344; padding: 20px; border-radius: 30px;">
-        ✅ Para imprimir: Guarde esta página como PDF o capture las imágenes.<br>
-        ✅ El camión ya no es camioneta, es un camión de carga pequeño, tal como lo pidió.
+    <div style="color: white; font-size: 1.3rem; margin-top: 20px; background: #1e3344; padding: 15px 40px; border-radius: 60px;">
+        ✅ Esta es la TARJETA DIGITAL (estilo Netflix) que usted quería, con el camión chico.
     </div>
 </body>
 </html>
