@@ -3,20 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Acarreos | Transporte de Carga</title>
+    <title>Carlos Acarreos · Transporte de Confianza</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
         }
 
         body {
-            background-color: #ffffff;
+            background-color: #f5f7fa;
         }
 
-        /* ===== MENÚ HAMBURGUESA (AHORA SÍ FUNCIONA) ===== */
+        /* ===== MENÚ AHORA CON JAVASCRIPT (FUNCIONA SEGURO) ===== */
         header {
             background-color: #0a1a28;
             padding: 1rem 2rem;
@@ -66,54 +66,53 @@
             color: #f0b400;
         }
 
-        /* Icono hamburguesa */
+        /* Icono hamburguesa (solo visible en móvil) */
         .hamburguesa {
             display: none;
             font-size: 2.5rem;
             color: white;
             cursor: pointer;
-            user-select: none;
+            background: none;
+            border: none;
+            width: fit-content;
         }
 
-        /* Checkbox oculto */
-        #menu-check {
-            display: none;
+        /* Clase para mostrar el menú (la controla JavaScript) */
+        .nav-menu.active {
+            display: flex;
         }
 
-        /* ===== PORTADA CON CAMIÓN DE FRENTE EN VÍA ===== */
+        /* ===== PORTADA CON CAMIÓN PEQUEÑO ===== */
         .hero {
             width: 100%;
-            height: 90vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+            min-height: 85vh;
+            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
                         url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');
             background-size: cover;
-            background-position: center 40%;
+            background-position: center 30%;
             display: flex;
             align-items: center;
             justify-content: center;
             text-align: center;
             color: white;
+            padding: 4rem 2rem;
         }
 
         .hero-content {
             max-width: 900px;
-            padding: 2rem;
         }
 
         .hero-content h1 {
-            font-size: 4.5rem;
-            font-weight: 800;
+            font-size: 4rem;
             margin-bottom: 1rem;
             text-shadow: 2px 2px 5px rgba(0,0,0,0.7);
-            letter-spacing: 2px;
         }
 
         .hero-content p {
-            font-size: 2rem;
-            margin-bottom: 2.5rem;
+            font-size: 1.8rem;
+            margin-bottom: 2rem;
             color: #f0b400;
             font-weight: 600;
-            text-shadow: 1px 1px 3px black;
         }
 
         .btn-wsp {
@@ -121,7 +120,7 @@
             background: #25D366;
             color: white;
             padding: 1.2rem 3rem;
-            font-size: 1.6rem;
+            font-size: 1.5rem;
             font-weight: bold;
             text-decoration: none;
             border-radius: 60px;
@@ -135,7 +134,7 @@
             transform: scale(1.05);
         }
 
-        /* ===== MISIÓN, VISIÓN Y VALORES ===== */
+        /* ===== MISIÓN, VISIÓN, VALORES (CENTRADOS) ===== */
         .filosofia {
             max-width: 1200px;
             margin: 5rem auto;
@@ -161,7 +160,7 @@
 
         .filosofia-item h2 {
             color: #0a1a28;
-            font-size: 2.2rem;
+            font-size: 2rem;
             margin-bottom: 1.5rem;
         }
 
@@ -169,6 +168,7 @@
             color: #555;
             font-size: 1.2rem;
             line-height: 1.6;
+            text-align: center;
         }
 
         .filosofia-item ul {
@@ -237,13 +237,14 @@
             text-decoration: none;
         }
 
-        /* ===== RESPONSIVE (MENÚ HAMBURGUESA FUNCIONAL) ===== */
+        /* ===== RESPONSIVE (MENÚ CONTROLADO POR JS) ===== */
         @media (max-width: 768px) {
             .hamburguesa {
-                display: block;
+                display: block; /* Mostrar botón en móvil */
             }
 
             .nav-menu {
+                display: none; /* Oculto por defecto en móvil */
                 position: absolute;
                 top: 80px;
                 left: 0;
@@ -252,17 +253,13 @@
                 flex-direction: column;
                 align-items: center;
                 gap: 0;
-                max-height: 0;
-                overflow: hidden;
-                transition: max-height 0.5s ease;
-                padding: 0;
+                padding: 1rem 0;
                 box-shadow: 0 10px 15px rgba(0,0,0,0.3);
                 z-index: 999;
             }
 
-            #menu-check:checked ~ .nav-menu {
-                max-height: 400px;
-                padding: 1rem 0;
+            .nav-menu.active {
+                display: flex; /* Se muestra cuando tiene la clase active */
             }
 
             .nav-menu li {
@@ -297,15 +294,14 @@
 </head>
 <body>
 
-    <!-- HEADER CON MENÚ QUE SÍ FUNCIONA -->
     <header>
         <div class="navbar">
             <div class="logo">CARLOS <span>ACARREOS</span></div>
             
-            <input type="checkbox" id="menu-check">
-            <label for="menu-check" class="hamburguesa">☰</label>
+            <!-- Botón hamburguesa con JavaScript -->
+            <button class="hamburguesa" id="menu-btn">☰</button>
             
-            <ul class="nav-menu">
+            <ul class="nav-menu" id="menu">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Servicios</a></li>
                 <li><a href="#">Cotizaciones</a></li>
@@ -314,16 +310,16 @@
         </div>
     </header>
 
-    <!-- PORTADA: CAMIÓN DE FRENTE EN LA VÍA -->
+    <!-- PORTADA: CAMIÓN PEQUEÑO (la imagen es la misma pero el camión se ve pequeño por la escala) -->
     <section class="hero">
         <div class="hero-content">
             <h1>CARLOS ACARREOS</h1>
             <p>Seguridad · Compromiso · Puntualidad</p>
-            <a href="https://wa.me/573005274172?text=Hola%20Carlos,%20necesito%20información%20sobre%20tus%20servicios" class="btn-wsp" target="_blank">📱 Contáctame al 300 527 4172</a>
+            <a href="https://wa.me/573005274172?text=Hola%20Carlos,%20necesito%20información" class="btn-wsp" target="_blank">📱 300 527 4172</a>
         </div>
     </section>
 
-    <!-- MISIÓN, VISIÓN Y VALORES -->
+    <!-- MISIÓN, VISIÓN, VALORES -->
     <section class="filosofia">
         <div class="filosofia-item">
             <h2>🎯 Misión</h2>
@@ -331,7 +327,7 @@
         </div>
         <div class="filosofia-item">
             <h2>👁️ Visión</h2>
-            <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra flota de camiones, nuestra puntualidad y el trato personalizado a cada cliente.</p>
+            <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra flota de vehículos, nuestra puntualidad y el trato personalizado a cada cliente.</p>
         </div>
         <div class="filosofia-item">
             <h2>⭐ Valores</h2>
@@ -360,12 +356,36 @@
         </div>
     </section>
 
-    <!-- PIE DE PÁGINA -->
     <footer>
         <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
         <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7 a tu servicio</p>
         <p>🚛 Transporte de carga con responsabilidad</p>
     </footer>
+
+    <!-- ===== JAVASCRIPT: EL MENÚ AHORA SÍ FUNCIONA ===== -->
+    <script>
+        // Esperar a que todo el contenido cargue
+        document.addEventListener('DOMContentLoaded', function() {
+            const menuBtn = document.getElementById('menu-btn');
+            const menu = document.getElementById('menu');
+
+            // Función para alternar el menú
+            function toggleMenu() {
+                menu.classList.toggle('active');
+            }
+
+            // Evento click en el botón hamburguesa
+            menuBtn.addEventListener('click', toggleMenu);
+
+            // Opcional: cerrar el menú al hacer clic en un enlace
+            const menuLinks = menu.querySelectorAll('a');
+            menuLinks.forEach(link => {
+                link.addEventListener('click', function() {
+                    menu.classList.remove('active');
+                });
+            });
+        });
+    </script>
 
 </body>
 </html>
