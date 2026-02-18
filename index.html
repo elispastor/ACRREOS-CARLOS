@@ -3,22 +3,22 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Acarreos · Transporte de Confianza</title>
+    <title>Carlos Acarreos · El que tapa sopa</title>
     <style>
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+            font-family: 'Segoe UI', Roboto, sans-serif;
         }
 
         body {
-            background-color: #f5f7fa;
+            background: #f4f7fc;
         }
 
-        /* ===== MENÚ AHORA CON JAVASCRIPT (FUNCIONA SEGURO) ===== */
+        /* ===== MENÚ CON JAVASCRIPT (AHORA SÍ) ===== */
         header {
-            background-color: #0a1a28;
+            background: #0a1a28;
             padding: 1rem 2rem;
             position: sticky;
             top: 0;
@@ -44,7 +44,6 @@
             color: #f0b400;
         }
 
-        /* Menú para escritorio */
         .nav-menu {
             display: flex;
             list-style: none;
@@ -66,7 +65,6 @@
             color: #f0b400;
         }
 
-        /* Icono hamburguesa (solo visible en móvil) */
         .hamburguesa {
             display: none;
             font-size: 2.5rem;
@@ -74,20 +72,14 @@
             cursor: pointer;
             background: none;
             border: none;
-            width: fit-content;
         }
 
-        /* Clase para mostrar el menú (la controla JavaScript) */
-        .nav-menu.active {
-            display: flex;
-        }
-
-        /* ===== PORTADA CON CAMIÓN PEQUEÑO ===== */
+        /* ===== PORTADA CON CAMIÓN PEQUEÑO (AHORA SÍ) ===== */
         .hero {
             width: 100%;
             min-height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.6), rgba(0,0,0,0.6)), 
-                        url('https://images.unsplash.com/photo-1601584115197-04ecc0da31d7?q=80&w=2070&auto=format&fit=crop');
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://images.pexels.com/photos/2199293/pexels-photo-2199293.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
             background-size: cover;
             background-position: center 30%;
             display: flex;
@@ -95,11 +87,11 @@
             justify-content: center;
             text-align: center;
             color: white;
-            padding: 4rem 2rem;
+            padding: 2rem;
         }
 
         .hero-content {
-            max-width: 900px;
+            max-width: 800px;
         }
 
         .hero-content h1 {
@@ -109,7 +101,7 @@
         }
 
         .hero-content p {
-            font-size: 1.8rem;
+            font-size: 2rem;
             margin-bottom: 2rem;
             color: #f0b400;
             font-weight: 600;
@@ -121,12 +113,11 @@
             color: white;
             padding: 1.2rem 3rem;
             font-size: 1.5rem;
-            font-weight: bold;
             text-decoration: none;
             border-radius: 60px;
-            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
-            transition: 0.3s;
+            font-weight: bold;
             border: 2px solid #f0b400;
+            transition: 0.3s;
         }
 
         .btn-wsp:hover {
@@ -146,29 +137,23 @@
 
         .filosofia-item {
             background: white;
-            padding: 2.5rem 2rem;
+            padding: 2rem;
             border-radius: 20px;
             box-shadow: 0 10px 30px rgba(0,0,0,0.1);
             text-align: center;
             border-top: 5px solid #f0b400;
-            transition: 0.3s;
-        }
-
-        .filosofia-item:hover {
-            transform: translateY(-10px);
         }
 
         .filosofia-item h2 {
             color: #0a1a28;
             font-size: 2rem;
-            margin-bottom: 1.5rem;
+            margin-bottom: 1rem;
         }
 
         .filosofia-item p {
-            color: #555;
-            font-size: 1.2rem;
-            line-height: 1.6;
-            text-align: center;
+            color: #444;
+            font-size: 1.1rem;
+            line-height: 1.5;
         }
 
         .filosofia-item ul {
@@ -178,18 +163,17 @@
         }
 
         .filosofia-item li {
-            margin: 1rem 0;
-            font-size: 1.2rem;
+            margin: 0.8rem 0;
+            font-size: 1.1rem;
             display: flex;
             align-items: center;
-            gap: 0.8rem;
+            gap: 0.5rem;
         }
 
         .filosofia-item li::before {
             content: "✓";
             color: #f0b400;
             font-weight: bold;
-            font-size: 1.3rem;
         }
 
         /* ===== SERVICIOS ===== */
@@ -223,13 +207,11 @@
             color: white;
             text-align: center;
             padding: 2rem;
-            margin-top: 3rem;
             border-top: 4px solid #f0b400;
         }
 
         footer p {
             margin: 0.5rem 0;
-            font-size: 1.1rem;
         }
 
         footer a {
@@ -237,14 +219,14 @@
             text-decoration: none;
         }
 
-        /* ===== RESPONSIVE (MENÚ CONTROLADO POR JS) ===== */
+        /* ===== RESPONSIVE ===== */
         @media (max-width: 768px) {
             .hamburguesa {
-                display: block; /* Mostrar botón en móvil */
+                display: block;
             }
 
             .nav-menu {
-                display: none; /* Oculto por defecto en móvil */
+                display: none;
                 position: absolute;
                 top: 80px;
                 left: 0;
@@ -255,11 +237,10 @@
                 gap: 0;
                 padding: 1rem 0;
                 box-shadow: 0 10px 15px rgba(0,0,0,0.3);
-                z-index: 999;
             }
 
             .nav-menu.active {
-                display: flex; /* Se muestra cuando tiene la clase active */
+                display: flex;
             }
 
             .nav-menu li {
@@ -286,7 +267,7 @@
             }
 
             .btn-wsp {
-                font-size: 1.3rem;
+                font-size: 1.2rem;
                 padding: 1rem 2rem;
             }
         }
@@ -298,10 +279,10 @@
         <div class="navbar">
             <div class="logo">CARLOS <span>ACARREOS</span></div>
             
-            <!-- Botón hamburguesa con JavaScript -->
-            <button class="hamburguesa" id="menu-btn">☰</button>
+            <!-- Botón hamburguesa con ID único -->
+            <button class="hamburguesa" id="menuToggle">☰</button>
             
-            <ul class="nav-menu" id="menu">
+            <ul class="nav-menu" id="mainMenu">
                 <li><a href="#">Inicio</a></li>
                 <li><a href="#">Servicios</a></li>
                 <li><a href="#">Cotizaciones</a></li>
@@ -310,41 +291,39 @@
         </div>
     </header>
 
-    <!-- PORTADA: CAMIÓN PEQUEÑO (la imagen es la misma pero el camión se ve pequeño por la escala) -->
+    <!-- PORTADA: CAMIÓN PEQUEÑO -->
     <section class="hero">
         <div class="hero-content">
             <h1>CARLOS ACARREOS</h1>
             <p>Seguridad · Compromiso · Puntualidad</p>
-            <a href="https://wa.me/573005274172?text=Hola%20Carlos,%20necesito%20información" class="btn-wsp" target="_blank">📱 300 527 4172</a>
+            <a href="https://wa.me/573005274172" class="btn-wsp" target="_blank">📱 300 527 4172</a>
         </div>
     </section>
 
-    <!-- MISIÓN, VISIÓN, VALORES -->
+    <!-- MISIÓN, VISIÓN, VALORES (CENTRADOS) -->
     <section class="filosofia">
         <div class="filosofia-item">
             <h2>🎯 Misión</h2>
-            <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones, en el tiempo acordado y con total seguridad.</p>
+            <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
         </div>
         <div class="filosofia-item">
             <h2>👁️ Visión</h2>
-            <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra flota de vehículos, nuestra puntualidad y el trato personalizado a cada cliente.</p>
+            <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra flota de vehículos y el trato personalizado a cada cliente.</p>
         </div>
         <div class="filosofia-item">
             <h2>⭐ Valores</h2>
             <ul>
-                <li><strong>Compromiso:</strong> Con tu carga y tu tiempo</li>
-                <li><strong>Seguridad:</strong> Máxima protección para tus pertenencias</li>
-                <li><strong>Confianza:</strong> Transparencia en cada servicio</li>
-                <li><strong>Puntualidad:</strong> Llegamos siempre a tiempo</li>
+                <li><strong>Compromiso:</strong> Con tu carga y tiempo</li>
+                <li><strong>Seguridad:</strong> Máxima protección</li>
+                <li><strong>Confianza:</strong> Transparencia total</li>
             </ul>
         </div>
     </section>
 
-    <!-- SERVICIOS -->
     <section class="servicios">
         <div class="servicio-item">
             <h3>🚚 Mudanzas</h3>
-            <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con total cuidado.</p>
+            <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos.</p>
         </div>
         <div class="servicio-item">
             <h3>📦 Acarreos</h3>
@@ -352,38 +331,50 @@
         </div>
         <div class="servicio-item">
             <h3>📍 Cobertura</h3>
-            <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y toda la frontera.</p>
+            <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y frontera.</p>
         </div>
     </section>
 
     <footer>
         <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
-        <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7 a tu servicio</p>
-        <p>🚛 Transporte de carga con responsabilidad</p>
+        <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</p>
     </footer>
 
-    <!-- ===== JAVASCRIPT: EL MENÚ AHORA SÍ FUNCIONA ===== -->
+    <!-- JAVASCRIPT: MENÚ 100% FUNCIONAL -->
     <script>
-        // Esperar a que todo el contenido cargue
+        // Esperar a que la página cargue completamente
         document.addEventListener('DOMContentLoaded', function() {
-            const menuBtn = document.getElementById('menu-btn');
-            const menu = document.getElementById('menu');
+            const menuBtn = document.getElementById('menuToggle');
+            const menu = document.getElementById('mainMenu');
 
-            // Función para alternar el menú
-            function toggleMenu() {
-                menu.classList.toggle('active');
-            }
+            // Verificar que los elementos existen
+            if (menuBtn && menu) {
+                // Función para abrir/cerrar menú
+                function toggleMenu() {
+                    menu.classList.toggle('active');
+                }
 
-            // Evento click en el botón hamburguesa
-            menuBtn.addEventListener('click', toggleMenu);
-
-            // Opcional: cerrar el menú al hacer clic en un enlace
-            const menuLinks = menu.querySelectorAll('a');
-            menuLinks.forEach(link => {
-                link.addEventListener('click', function() {
-                    menu.classList.remove('active');
+                // Evento click en el botón
+                menuBtn.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    toggleMenu();
                 });
-            });
+
+                // Cerrar menú al hacer clic en un enlace
+                const links = menu.querySelectorAll('a');
+                links.forEach(link => {
+                    link.addEventListener('click', function() {
+                        menu.classList.remove('active');
+                    });
+                });
+
+                // Cerrar menú al hacer clic fuera (opcional)
+                document.addEventListener('click', function(event) {
+                    if (!menu.contains(event.target) && !menuBtn.contains(event.target)) {
+                        menu.classList.remove('active');
+                    }
+                });
+            }
         });
     </script>
 
