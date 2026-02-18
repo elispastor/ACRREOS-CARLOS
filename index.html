@@ -3,26 +3,20 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Carlos Acarreos · Camioncito</title>
+    <title>Carlos Acarreos · Versión Simple</title>
     <style>
+        /* RESET */
         * {
             margin: 0;
             padding: 0;
             box-sizing: border-box;
-            font-family: 'Segoe UI', sans-serif;
-        }
-
-        body {
-            background: #f4f7fc;
+            font-family: Arial, sans-serif;
         }
 
         /* MENÚ CON CHECKBOX (FUNCIONA SIEMPRE) */
         header {
             background: #0a1a28;
-            padding: 1rem 2rem;
-            position: sticky;
-            top: 0;
-            z-index: 1000;
+            padding: 15px 20px;
         }
 
         .navbar {
@@ -35,74 +29,46 @@
 
         .logo {
             color: white;
-            font-size: 2rem;
-            font-weight: 700;
+            font-size: 24px;
+            font-weight: bold;
         }
 
         .logo span {
-            color: #f0b400;
+            color: gold;
         }
 
         /* Checkbox oculto */
-        #menu-check {
+        #abrir-menu {
             display: none;
         }
 
-        .menu-icono {
+        /* Icono hamburguesa */
+        .hamburguesa {
             display: none;
-            font-size: 2.5rem;
+            font-size: 30px;
             color: white;
             cursor: pointer;
         }
 
-        .nav-menu {
+        /* Menú normal en escritorio */
+        .menu {
             display: flex;
             list-style: none;
-            gap: 2rem;
+            gap: 20px;
         }
 
-        .nav-menu li a {
+        .menu li a {
             color: white;
             text-decoration: none;
-            font-size: 1.2rem;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .menu-icono {
-                display: block;
-            }
-
-            .nav-menu {
-                display: none;
-                position: absolute;
-                top: 80px;
-                left: 0;
-                width: 100%;
-                background: #0a1a28;
-                flex-direction: column;
-                align-items: center;
-                gap: 0;
-                padding: 1rem 0;
-            }
-
-            #menu-check:checked ~ .nav-menu {
-                display: flex;
-            }
-
-            .nav-menu li {
-                width: 100%;
-                text-align: center;
-                padding: 1rem 0;
-                border-bottom: 1px solid #f0b400;
-            }
+            font-size: 16px;
         }
 
         /* PORTADA */
-        .hero {
+        .portada {
             width: 100%;
-            min-height: 85vh;
-            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), url('https://images.unsplash.com/photo-1519003722824-194d4455a60c?q=80&w=2075&auto=format&fit=crop');
+            height: 500px;
+            background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.5)), 
+                        url('https://i.postimg.cc/DZ6JyvBh/Diseno-sin-titulo-2.png');
             background-size: cover;
             background-position: center;
             display: flex;
@@ -112,50 +78,88 @@
             color: white;
         }
 
-        .hero-content h1 {
-            font-size: 3.5rem;
-            margin-bottom: 1rem;
+        .portada h1 {
+            font-size: 48px;
+            margin-bottom: 10px;
         }
 
-        .hero-content p {
-            font-size: 1.8rem;
-            color: #f0b400;
-            margin-bottom: 2rem;
+        .portada p {
+            font-size: 24px;
+            color: gold;
+            margin-bottom: 20px;
         }
 
-        .btn-wsp {
+        .whatsapp {
             background: #25D366;
             color: white;
-            padding: 1rem 2.5rem;
-            font-size: 1.5rem;
+            padding: 15px 30px;
             text-decoration: none;
             border-radius: 50px;
+            font-size: 20px;
             display: inline-block;
         }
 
-        /* MISIÓN, VISIÓN, VALORES */
-        .filosofia {
+        /* MISIÓN VISIÓN VALORES */
+        .info {
             max-width: 1200px;
-            margin: 4rem auto;
-            padding: 0 2rem;
+            margin: 50px auto;
+            padding: 0 20px;
             display: grid;
-            grid-template-columns: repeat(3, 1fr);
-            gap: 2rem;
+            grid-template-columns: 1fr 1fr 1fr;
+            gap: 20px;
         }
 
-        .filosofia-item {
+        .caja {
             background: white;
-            padding: 2rem;
-            border-radius: 15px;
+            padding: 30px;
+            border-radius: 10px;
             text-align: center;
-            border-top: 5px solid #f0b400;
+            box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+            border-top: 4px solid gold;
         }
 
+        .caja h2 {
+            color: #0a1a28;
+            margin-bottom: 15px;
+        }
+
+        /* PIE */
         footer {
             background: #0a1a28;
             color: white;
             text-align: center;
-            padding: 2rem;
+            padding: 20px;
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 768px) {
+            .hamburguesa {
+                display: block;
+            }
+
+            .menu {
+                display: none;
+                position: absolute;
+                top: 70px;
+                left: 0;
+                width: 100%;
+                background: #0a1a28;
+                flex-direction: column;
+                align-items: center;
+                padding: 20px 0;
+            }
+
+            #abrir-menu:checked ~ .menu {
+                display: flex;
+            }
+
+            .info {
+                grid-template-columns: 1fr;
+            }
+
+            .portada h1 {
+                font-size: 32px;
+            }
         }
     </style>
 </head>
@@ -164,9 +168,12 @@
 <header>
     <div class="navbar">
         <div class="logo">CARLOS <span>ACARREOS</span></div>
-        <input type="checkbox" id="menu-check">
-        <label for="menu-check" class="menu-icono">☰</label>
-        <ul class="nav-menu">
+        
+        <!-- Checkbox + etiqueta -->
+        <input type="checkbox" id="abrir-menu">
+        <label for="abrir-menu" class="hamburguesa">☰</label>
+        
+        <ul class="menu">
             <li><a href="#">Inicio</a></li>
             <li><a href="#">Servicios</a></li>
             <li><a href="#">Cotizaciones</a></li>
@@ -175,31 +182,31 @@
     </div>
 </header>
 
-<section class="hero">
-    <div class="hero-content">
+<section class="portada">
+    <div>
         <h1>CARLOS ACARREOS</h1>
         <p>Seguridad · Compromiso · Puntualidad</p>
-        <a href="https://wa.me/573005274172" class="btn-wsp">📱 300 527 4172</a>
+        <a href="#" class="whatsapp">📱 300 527 4172</a>
     </div>
 </section>
 
-<section class="filosofia">
-    <div class="filosofia-item">
+<section class="info">
+    <div class="caja">
         <h2>🎯 Misión</h2>
-        <p>Brindar soluciones de transporte con la más alta calidad.</p>
+        <p>Brindar soluciones de transporte con la más alta calidad, garantizando que cada carga llegue a tiempo y en perfectas condiciones.</p>
     </div>
-    <div class="filosofia-item">
+    <div class="caja">
         <h2>👁️ Visión</h2>
-        <p>Ser la empresa líder en acarreos de la región.</p>
+        <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra puntualidad y trato personalizado.</p>
     </div>
-    <div class="filosofia-item">
+    <div class="caja">
         <h2>⭐ Valores</h2>
-        <p>Compromiso · Seguridad · Confianza</p>
+        <p>Compromiso · Seguridad · Confianza · Puntualidad</p>
     </div>
 </section>
 
 <footer>
-    <p>&copy; 2026 Carlos Acarreos · 300 527 4172</p>
+    <p>© 2026 Carlos Acarreos · 300 527 4172</p>
 </footer>
 
 </body>
