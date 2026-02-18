@@ -4,480 +4,381 @@
   <meta charset="UTF-8">
   <title>Carlos Acarreos · Transporte de Confianza</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <style>
-    :root {
-      --azul-profundo: #0a1a28;
-      --amarillo-oro: #f0b400;
-      --texto-claro: #ffffff;
-      --texto-oscuro: #333333;
-    }
-
     * {
-      box-sizing: border-box;
       margin: 0;
       padding: 0;
+      box-sizing: border-box;
+      font-family: 'Segoe UI', Arial, sans-serif;
+    }
+
+    :root {
+      --azul: #0a1a28;
+      --amarillo: #f0b400;
+      --blanco: #ffffff;
     }
 
     body {
-      font-family: Arial, sans-serif;
-      background: #f5f5f5;
-      color: var(--texto-oscuro);
+      background: #f0f0f0;
     }
 
-    /* Barra superior */
+    /* HEADER */
     header {
+      background: var(--azul);
+      padding: 15px 20px;
       position: sticky;
       top: 0;
-      z-index: 10;
-      background: var(--azul-profundo);
-      box-shadow: 0 2px 6px rgba(0,0,0,0.3);
+      z-index: 100;
     }
 
     .nav-container {
       max-width: 1000px;
       margin: 0 auto;
       display: flex;
-      align-items: center;
       justify-content: space-between;
-      padding: 15px 16px;
-    }
-
-    .brand {
-      font-weight: bold;
-      font-size: 1.3rem;
-      color: var(--texto-claro);
-    }
-
-    .brand span {
-      color: var(--amarillo-oro);
-    }
-
-    nav {
-      display: flex;
       align-items: center;
-      gap: 16px;
     }
 
-    nav a {
+    .logo {
+      color: white;
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+
+    .logo span {
+      color: var(--amarillo);
+    }
+
+    .menu {
+      list-style: none;
+      display: flex;
+      gap: 25px;
+    }
+
+    .menu li a {
+      color: white;
       text-decoration: none;
-      color: var(--texto-claro);
       font-size: 1rem;
-      font-weight: 500;
     }
 
-    nav a:hover {
-      color: var(--amarillo-oro);
+    .menu li a:hover {
+      color: var(--amarillo);
     }
 
-    /* BOTÓN HAMBURGUESA */
-    .menu-toggle {
+    .hamburguesa {
       display: none;
+      font-size: 30px;
+      color: white;
+      cursor: pointer;
       background: none;
       border: none;
-      cursor: pointer;
-      padding: 6px;
-      margin-left: 10px;
     }
 
-    .menu-toggle span {
-      display: block;
-      width: 25px;
-      height: 3px;
-      background-color: var(--texto-claro);
-      margin: 4px 0;
-      transition: transform 0.2s ease, opacity 0.2s ease;
-    }
-
-    /* Menú móvil */
-    .nav-links {
-      display: flex;
-      gap: 20px;
-    }
-
-    @media (max-width: 720px) {
-      nav {
-        position: relative;
-      }
-
-      .menu-toggle {
-        display: inline-block;
-      }
-
-      .nav-links {
-        position: absolute;
-        top: 120%;
-        right: 0;
-        background: var(--azul-profundo);
-        border-radius: 12px;
-        box-shadow: 0 4px 12px rgba(0,0,0,0.3);
-        padding: 15px;
-        display: none;
-        flex-direction: column;
-        align-items: flex-start;
-        min-width: 180px;
-        border: 1px solid var(--amarillo-oro);
-      }
-
-      .nav-links a {
-        padding: 8px 0;
-        font-size: 1.1rem;
-        width: 100%;
-        border-bottom: 1px solid var(--amarillo-oro);
-      }
-
-      .nav-links a:last-child {
-        border-bottom: none;
-      }
-
-      .nav-links.show {
-        display: flex;
-      }
-    }
-
-    .menu-toggle.active span:nth-child(1) {
-      transform: translateY(7px) rotate(45deg);
-    }
-
-    .menu-toggle.active span:nth-child(2) {
-      opacity: 0;
-    }
-
-    .menu-toggle.active span:nth-child(3) {
-      transform: translateY(-7px) rotate(-45deg);
-    }
-
-    /* Sección principal (hero) */
+    /* HERO CON CAMIÓN EN CSS */
     .hero {
       max-width: 1000px;
-      margin: 20px auto 40px;
+      margin: 30px auto;
       background: white;
-      border-radius: 18px;
-      box-shadow: 0 8px 20px rgba(0,0,0,0.2);
+      border-radius: 20px;
       overflow: hidden;
-      border: 1px solid var(--amarillo-oro);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      border: 2px solid var(--amarillo);
     }
 
-    .hero-img {
-      width: 100%;
-      height: 250px;
-      background-size: cover;
-      background-position: center;
-      background-repeat: no-repeat;
-      /* SOLO CAMBIÉ ESTO: la imagen del camión */
-      background-image: url('https://images.pexels.com/photos/1754539/pexels-photo-1754539.jpeg?auto=compress&cs=tinysrgb&w=1260&h=750&dpr=2');
+    .camion-css {
+      background: linear-gradient(145deg, #1e3a4a, #0a1a28);
+      padding: 40px;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 250px;
+    }
+
+    /* DIBUJO DEL CAMIÓN CON CSS PURO */
+    .camion-dibujo {
+      position: relative;
+      width: 400px;
+      height: 150px;
+    }
+
+    /* Caja trasera */
+    .caja {
+      position: absolute;
+      width: 220px;
+      height: 70px;
+      background: var(--amarillo);
+      right: 0;
+      top: 20px;
+      border-radius: 10px;
+      border: 3px solid white;
+    }
+
+    /* Cabina */
+    .cabina {
+      position: absolute;
+      width: 90px;
+      height: 60px;
+      background: var(--amarillo);
+      left: 40px;
+      top: 30px;
+      border-radius: 10px;
+      border: 3px solid white;
+    }
+
+    /* Ventana */
+    .ventana {
+      position: absolute;
+      width: 30px;
+      height: 25px;
+      background: var(--azul);
+      left: 55px;
+      top: 35px;
+      border-radius: 5px;
+      border: 2px solid white;
+    }
+
+    /* Ruedas */
+    .rueda {
+      position: absolute;
+      width: 40px;
+      height: 40px;
+      background: #333;
+      border-radius: 50%;
+      border: 4px solid white;
+      bottom: 0;
+    }
+
+    .rueda-izq {
+      left: 80px;
+    }
+
+    .rueda-der {
+      right: 60px;
+    }
+
+    /* Llantas */
+    .rueda::after {
+      content: "";
+      position: absolute;
+      width: 20px;
+      height: 20px;
+      background: #111;
+      border-radius: 50%;
+      top: 6px;
+      left: 6px;
+      border: 2px solid #666;
+    }
+
+    /* Luces */
+    .luz {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: #ff0;
+      border-radius: 50%;
+      left: 30px;
+      top: 45px;
+    }
+
+    .luz-roja {
+      background: red;
+      right: -10px;
+      left: auto;
+      top: 45px;
     }
 
     .hero-content {
-      padding: 25px 22px 30px;
+      padding: 30px;
       text-align: center;
     }
 
-    .hero-title {
-      font-size: 2rem;
-      font-weight: bold;
-      margin-bottom: 8px;
-      color: var(--azul-profundo);
+    .hero-content h1 {
+      font-size: 2.5rem;
+      color: var(--azul);
+      margin-bottom: 10px;
     }
 
-    .hero-subtitle {
+    .hero-content p {
       font-size: 1.2rem;
-      color: var(--amarillo-oro);
-      margin-bottom: 15px;
-      font-weight: 600;
-    }
-
-    .hero-text {
-      font-size: 1rem;
+      color: var(--amarillo);
+      font-weight: bold;
       margin-bottom: 20px;
-      color: #555;
-    }
-
-    .buttons-row {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 15px;
-      justify-content: center;
     }
 
     .btn {
-      border: none;
-      border-radius: 999px;
-      padding: 12px 24px;
-      cursor: pointer;
-      font-size: 1rem;
-      font-weight: 600;
+      background: #25D366;
+      color: white;
+      padding: 12px 30px;
       text-decoration: none;
-      display: inline-flex;
-      align-items: center;
-      gap: 10px;
-      transition: 0.3s;
+      border-radius: 50px;
+      font-size: 1.2rem;
+      font-weight: bold;
+      display: inline-block;
+      border: 2px solid var(--amarillo);
     }
 
-    .btn-primary {
-      background: var(--amarillo-oro);
-      color: var(--azul-profundo);
-      box-shadow: 0 4px 10px rgba(0,0,0,0.2);
-    }
-
-    .btn-primary:hover {
-      background: var(--azul-profundo);
-      color: var(--amarillo-oro);
-    }
-
-    .btn-secondary {
-      background: var(--azul-profundo);
-      color: var(--texto-claro);
-      border: 2px solid var(--amarillo-oro);
-    }
-
-    .btn-secondary:hover {
-      background: var(--amarillo-oro);
-      color: var(--azul-profundo);
-    }
-
-    /* Misión Visión Valores */
-    #filosofia {
+    /* SECCIONES */
+    .seccion {
       max-width: 1000px;
-      margin: 0 auto 40px;
-      padding: 0 16px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    #filosofia h2 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--azul-profundo);
+    .seccion h2 {
+      color: var(--azul);
+      font-size: 2rem;
       text-align: center;
-      border-bottom: 3px solid var(--amarillo-oro);
+      margin-bottom: 30px;
+      border-bottom: 3px solid var(--amarillo);
       padding-bottom: 10px;
     }
 
-    .filosofia-grid {
+    .grid {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
       gap: 20px;
     }
 
-    .filosofia-card {
+    .card {
       background: white;
+      padding: 25px;
       border-radius: 15px;
-      padding: 25px 20px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       text-align: center;
-      border-top: 5px solid var(--amarillo-oro);
+      border-top: 5px solid var(--amarillo);
     }
 
-    .filosofia-card h3 {
-      color: var(--azul-profundo);
-      font-size: 1.4rem;
+    .card h3 {
+      color: var(--azul);
+      font-size: 1.5rem;
       margin-bottom: 15px;
     }
 
-    .filosofia-card p {
-      color: #555;
-      line-height: 1.6;
-    }
-
-    .filosofia-card ul {
+    .card ul {
       list-style: none;
       text-align: left;
     }
 
-    .filosofia-card li {
+    .card li {
       margin: 10px 0;
       display: flex;
       align-items: center;
       gap: 8px;
     }
 
-    .filosofia-card li::before {
+    .card li::before {
       content: "✓";
-      color: var(--amarillo-oro);
+      color: var(--amarillo);
       font-weight: bold;
-    }
-
-    /* Servicios */
-    #servicios {
-      max-width: 1000px;
-      margin: 0 auto 40px;
-      padding: 0 16px;
-    }
-
-    #servicios h2 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--azul-profundo);
-      text-align: center;
-      border-bottom: 3px solid var(--amarillo-oro);
-      padding-bottom: 10px;
-    }
-
-    .servicios-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 20px;
-    }
-
-    .servicio-card {
-      background: white;
-      border-radius: 12px;
-      padding: 20px;
-      box-shadow: 0 4px 10px rgba(0,0,0,0.1);
-      text-align: center;
-      border-bottom: 4px solid var(--amarillo-oro);
-    }
-
-    .servicio-card h3 {
-      color: var(--azul-profundo);
-      font-size: 1.3rem;
-      margin-bottom: 10px;
-    }
-
-    .servicio-card p {
-      color: #666;
-    }
-
-    /* Contacto */
-    #contacto {
-      max-width: 1000px;
-      margin: 0 auto 40px;
-      padding: 0 16px;
-    }
-
-    #contacto h2 {
-      font-size: 1.5rem;
-      margin-bottom: 20px;
-      color: var(--azul-profundo);
-      text-align: center;
-      border-bottom: 3px solid var(--amarillo-oro);
-      padding-bottom: 10px;
     }
 
     .contacto-box {
       background: white;
+      padding: 30px;
       border-radius: 15px;
-      padding: 25px;
-      box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       text-align: center;
-      border: 2px solid var(--amarillo-oro);
+      border: 2px solid var(--amarillo);
     }
 
-    .contacto-box p {
-      margin: 12px 0;
-      font-size: 1.1rem;
-    }
-
-    .contacto-dato {
-      font-weight: bold;
-      color: var(--azul-profundo);
-      font-size: 1.3rem;
-    }
-
-    /* Footer */
     footer {
-      background: var(--azul-profundo);
-      color: var(--texto-claro);
-      padding: 25px;
+      background: var(--azul);
+      color: white;
       text-align: center;
-      border-top: 5px solid var(--amarillo-oro);
-    }
-
-    footer small {
-      display: block;
-      margin: 5px 0;
+      padding: 30px;
+      margin-top: 40px;
+      border-top: 5px solid var(--amarillo);
     }
 
     footer a {
-      color: var(--amarillo-oro);
+      color: var(--amarillo);
       text-decoration: none;
     }
 
-    @media (min-width: 720px) {
-      .hero {
-        display: grid;
-        grid-template-columns: 1.2fr 1fr;
+    @media (max-width: 768px) {
+      .hamburguesa {
+        display: block;
       }
-      .hero-img {
-        height: 100%;
-      }
-      .hero-content {
-        text-align: left;
-        padding: 30px;
-      }
-      .buttons-row {
-        justify-content: flex-start;
-      }
-    }
 
-    @media (max-width: 720px) {
-      .filosofia-grid, .servicios-grid {
+      .menu {
+        display: none;
+        position: absolute;
+        top: 70px;
+        left: 0;
+        width: 100%;
+        background: var(--azul);
+        flex-direction: column;
+        align-items: center;
+        padding: 20px 0;
+        gap: 15px;
+      }
+
+      .menu.mostrar {
+        display: flex;
+      }
+
+      .grid {
         grid-template-columns: 1fr;
+      }
+
+      .camion-dibujo {
+        transform: scale(0.8);
       }
     }
   </style>
 </head>
-
 <body>
 
   <header>
     <div class="nav-container">
-      <div class="brand">CARLOS <span>ACARREOS</span></div>
-      <nav>
-        <button class="menu-toggle" aria-label="Abrir menú">
-          <span></span>
-          <span></span>
-          <span></span>
-        </button>
-        <div class="nav-links">
-          <a href="#inicio">Inicio</a>
-          <a href="#filosofia">Filosofía</a>
-          <a href="#servicios">Servicios</a>
-          <a href="#contacto">Contacto</a>
-        </div>
-      </nav>
+      <div class="logo">CARLOS <span>ACARREOS</span></div>
+      <button class="hamburguesa" id="menuBtn">☰</button>
+      <ul class="menu" id="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#contacto">Contacto</a></li>
+      </ul>
     </div>
   </header>
 
   <main id="inicio">
     <section class="hero">
-      <!-- SOLO ESTO TIENE LA IMAGEN DEL CAMIÓN -->
-      <div class="hero-img"></div>
-      <div class="hero-content">
-        <div class="hero-title">CARLOS ACARREOS</div>
-        <div class="hero-subtitle">Seguridad · Compromiso · Puntualidad</div>
-        <p class="hero-text">
-          Transporte y acarreos con responsabilidad. Cobertura nacional e internacional. Tu carga en las mejores manos.
-        </p>
-
-        <div class="buttons-row">
-          <a class="btn btn-primary" href="https://wa.me/573005274172?text=Hola%20Carlos,%20necesito%20información" target="_blank">
-            <span>💬</span>
-            <span>WhatsApp 300 527 4172</span>
-          </a>
-          <a class="btn btn-secondary" href="tel:+573005274172">
-            <span>📞</span>
-            <span>Llamar ahora</span>
-          </a>
+      <!-- CAMIÓN DIBUJADO CON CSS -->
+      <div class="camion-css">
+        <div class="camion-dibujo">
+          <div class="caja"></div>
+          <div class="cabina"></div>
+          <div class="ventana"></div>
+          <div class="rueda rueda-izq"></div>
+          <div class="rueda rueda-der"></div>
+          <div class="luz"></div>
+          <div class="luz luz-roja"></div>
         </div>
+      </div>
+      <div class="hero-content">
+        <h1>CARLOS ACARREOS</h1>
+        <p>Seguridad · Compromiso · Puntualidad</p>
+        <a href="https://wa.me/573005274172" class="btn">📱 300 527 4172</a>
       </div>
     </section>
   </main>
 
-  <section id="filosofia">
+  <section id="filosofia" class="seccion">
     <h2>NUESTRA FILOSOFÍA</h2>
-    <div class="filosofia-grid">
-      <div class="filosofia-card">
+    <div class="grid">
+      <div class="card">
         <h3>🎯 Misión</h3>
         <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
       </div>
-      <div class="filosofia-card">
+      <div class="card">
         <h3>👁️ Visión</h3>
         <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra puntualidad y trato personalizado.</p>
       </div>
-      <div class="filosofia-card">
+      <div class="card">
         <h3>⭐ Valores</h3>
         <ul>
-          <li><strong>Compromiso:</strong> Con tu carga y tu tiempo</li>
+          <li><strong>Compromiso:</strong> Con tu carga y tiempo</li>
           <li><strong>Seguridad:</strong> Máxima protección</li>
           <li><strong>Confianza:</strong> Transparencia total</li>
           <li><strong>Puntualidad:</strong> Siempre a tiempo</li>
@@ -486,55 +387,52 @@
     </div>
   </section>
 
-  <section id="servicios">
+  <section id="servicios" class="seccion">
     <h2>SERVICIOS</h2>
-    <div class="servicios-grid">
-      <div class="servicio-card">
+    <div class="grid">
+      <div class="card">
         <h3>🚚 Mudanzas</h3>
-        <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con cuidado.</p>
+        <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con total cuidado.</p>
       </div>
-      <div class="servicio-card">
+      <div class="card">
         <h3>📦 Acarreos</h3>
         <p>Servicio puerta a puerta para tus pertenencias. Rapidez y compromiso.</p>
       </div>
-      <div class="servicio-card">
+      <div class="card">
         <h3>📍 Cobertura</h3>
-        <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y frontera.</p>
+        <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y toda la frontera.</p>
       </div>
     </div>
   </section>
 
-  <section id="contacto">
+  <section id="contacto" class="seccion">
     <h2>CONTACTO</h2>
     <div class="contacto-box">
-      <p class="contacto-dato">Carlos Acarreos</p>
-      <p>📱 <strong>300 527 4172</strong></p>
+      <p><strong>Carlos Acarreos</strong></p>
+      <p>📱 300 527 4172</p>
       <p>📍 Atención 24/7</p>
+      <p>Disponible en WhatsApp y llamadas</p>
     </div>
   </section>
 
   <footer>
-    <small>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</small>
-    <small>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</small>
+    <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
+    <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</p>
   </footer>
 
   <script>
-    const menuToggle = document.querySelector('.menu-toggle');
-    const navLinks = document.querySelector('.nav-links');
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
 
-    if (menuToggle && navLinks) {
-      menuToggle.addEventListener('click', () => {
-        menuToggle.classList.toggle('active');
-        navLinks.classList.toggle('show');
-      });
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('mostrar');
+    });
 
-      navLinks.querySelectorAll('a').forEach(link => {
-        link.addEventListener('click', () => {
-          menuToggle.classList.remove('active');
-          navLinks.classList.remove('show');
-        });
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('mostrar');
       });
-    }
+    });
   </script>
 
 </body>
