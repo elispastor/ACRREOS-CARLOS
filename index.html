@@ -2,14 +2,14 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <title>Acarreos Carlos  · Transporte de Confianza</title>
+  <title>Carlos Acarreos · Transporte de Confianza</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <style>
     * {
       margin: 0;
       padding: 0;
       box-sizing: border-box;
-      font-family: 'Segoe UI', sans-serif;
+      font-family: 'Segoe UI', Roboto, sans-serif;
     }
 
     :root {
@@ -26,6 +26,7 @@
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
+      z-index: 100;
     }
 
     .nav-container {
@@ -55,6 +56,11 @@
     .menu li a {
       color: white;
       text-decoration: none;
+      font-size: 1rem;
+    }
+
+    .menu li a:hover {
+      color: var(--oro);
     }
 
     .hamburguesa {
@@ -71,6 +77,7 @@
       margin: 30px auto;
       background: white;
       border-radius: 20px;
+      overflow: hidden;
       border: 2px solid var(--oro);
       display: grid;
       grid-template-columns: 1fr 1fr;
@@ -79,9 +86,8 @@
     .hero-img {
       width: 100%;
       min-height: 300px;
-      background-size: contain;
-background-repeat: no-repeat;
-background-color: var(--azul); /* para rellenar lo que sobre */
+      background-size: cover;
+      background-position: center;
       background-image: url('portada.jpg');
     }
 
@@ -92,12 +98,14 @@ background-color: var(--azul); /* para rellenar lo que sobre */
     .hero-content h1 {
       font-size: 2.5rem;
       color: var(--azul);
+      margin-bottom: 10px;
     }
 
     .hero-content p {
       font-size: 1.2rem;
       color: var(--oro);
-      margin: 1rem 0 2rem;
+      font-weight: bold;
+      margin-bottom: 20px;
     }
 
     .btn {
@@ -108,6 +116,7 @@ background-color: var(--azul); /* para rellenar lo que sobre */
       text-decoration: none;
       font-weight: bold;
       display: inline-block;
+      border: 2px solid var(--oro);
     }
 
     .seccion {
@@ -122,6 +131,7 @@ background-color: var(--azul); /* para rellenar lo que sobre */
       text-align: center;
       border-bottom: 3px solid var(--oro);
       padding-bottom: 10px;
+      margin-bottom: 30px;
     }
 
     .grid-3 {
@@ -134,7 +144,14 @@ background-color: var(--azul); /* para rellenar lo que sobre */
       background: white;
       padding: 25px;
       border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       border-top: 5px solid var(--oro);
+    }
+
+    .card h3 {
+      color: var(--azul);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
     }
 
     .qr-section {
@@ -153,8 +170,8 @@ background-color: var(--azul); /* para rellenar lo que sobre */
 
     .qr-container img {
       max-width: 250px;
-      border: 4px solid var(--azul);
       border-radius: 20px;
+      border: 4px solid var(--azul);
     }
 
     .contacto-box {
@@ -207,7 +224,7 @@ background-color: var(--azul); /* para rellenar lo que sobre */
 
 <header>
   <div class="nav-container">
-    <div class="logo">ACARREOS<span>CARLOS</span></div>
+    <div class="logo">CARLOS <span>ACARREOS</span></div>
     <button class="hamburguesa" id="menuBtn">☰</button>
     <ul class="menu" id="menu">
       <li><a href="#inicio">Inicio</a></li>
@@ -223,7 +240,7 @@ background-color: var(--azul); /* para rellenar lo que sobre */
   <section class="hero">
     <div class="hero-img"></div>
     <div class="hero-content">
-      <h1>ACARREOS CARLOS</h1>
+      <h1>CARLOS ACARREOS</h1>
       <p>Seguridad · Compromiso · Puntualidad</p>
       <a href="https://wa.me/573005274172" class="btn">📱 300 527 4172</a>
     </div>
@@ -284,20 +301,29 @@ background-color: var(--azul); /* para rellenar lo que sobre */
 <section id="contacto" class="seccion">
   <h2>CONTACTO</h2>
   <div class="contacto-box">
-    <p><strong>Acarreos Carlos</strong></p>
+    <p><strong>Carlos Acarreos</strong></p>
     <p>📱 300 527 4172</p>
     <p>📍 Atención 24/7</p>
   </div>
 </section>
 
 <footer>
-  <p>&copy; 2026 Acarreos Carlos · Todos los derechos reservados</p>
+  <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
   <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</p>
 </footer>
 
 <script>
-  document.getElementById('menuBtn').addEventListener('click', function() {
-    document.getElementById('menu').classList.toggle('mostrar');
+  const btn = document.getElementById('menuBtn');
+  const menu = document.getElementById('menu');
+  
+  btn.addEventListener('click', function() {
+    menu.classList.toggle('mostrar');
+  });
+
+  document.querySelectorAll('.menu a').forEach(link => {
+    link.addEventListener('click', function() {
+      menu.classList.remove('mostrar');
+    });
   });
 </script>
 
