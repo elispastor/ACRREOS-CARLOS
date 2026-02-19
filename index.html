@@ -2,27 +2,32 @@
 <html lang="es">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Carlos Acarreos · Transporte de Confianza</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
   <style>
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-      font-family: 'Segoe UI', Roboto, system-ui, sans-serif;
+    :root {
+      --azul-profundo: #0a1a28;
+      --amarillo-oro: #f0b400;
+      --texto-claro: #ffffff;
+      --texto-oscuro: #333333;
     }
 
-    :root {
-      --azul: #0a1a28;
-      --oro: #f0b400;
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
     }
 
     body {
-      background: #f4f7fc;
+      font-family: 'Segoe UI', Arial, sans-serif;
+      background: #f5f5f5;
+      color: var(--texto-oscuro);
     }
 
+    /* HEADER */
     header {
-      background: var(--azul);
+      background: var(--azul-profundo);
       padding: 1rem 2rem;
       position: sticky;
       top: 0;
@@ -30,134 +35,167 @@
     }
 
     .nav-container {
-      max-width: 1200px;
+      max-width: 1000px;
       margin: 0 auto;
       display: flex;
       justify-content: space-between;
       align-items: center;
     }
 
-    .logo {
+    .brand {
       color: white;
-      font-size: 1.8rem;
+      font-size: 1.5rem;
       font-weight: bold;
     }
 
-    .logo span {
-      color: var(--oro);
+    .brand span {
+      color: var(--amarillo-oro);
     }
 
-    .nav-links {
-      display: flex;
-      gap: 2rem;
+    .menu {
       list-style: none;
+      display: flex;
+      gap: 25px;
     }
 
-    .nav-links a {
+    .menu li a {
       color: white;
       text-decoration: none;
+      font-size: 1rem;
     }
 
-    .nav-links a:hover {
-      color: var(--oro);
+    .menu li a:hover {
+      color: var(--amarillo-oro);
     }
 
-    .menu-toggle {
+    .hamburguesa {
       display: none;
-      font-size: 2rem;
+      font-size: 30px;
       color: white;
+      cursor: pointer;
       background: none;
       border: none;
-      cursor: pointer;
     }
 
+    /* HERO */
     .hero {
-      max-width: 1200px;
-      margin: 2rem auto;
+      max-width: 1000px;
+      margin: 30px auto;
       background: white;
-      border-radius: 30px;
+      border-radius: 20px;
       overflow: hidden;
-      box-shadow: 0 10px 30px rgba(0,0,0,0.2);
-      border: 3px solid var(--oro);
+      box-shadow: 0 5px 20px rgba(0,0,0,0.2);
+      border: 2px solid var(--amarillo-oro);
       display: grid;
       grid-template-columns: 1fr 1fr;
     }
 
-    .hero-imagen {
+    .hero-img {
+      width: 100%;
       height: 100%;
-      min-height: 350px;
+      min-height: 300px;
       background-size: cover;
       background-position: center;
+      /* SOLO AGREGAMOS ESTA LÍNEA - LA FOTO */
       background-image: url('https://raw.githubusercontent.com/tu-usuario/acarreos-carlos/main/portada.jpg');
     }
 
     .hero-content {
-      padding: 3rem;
+      padding: 30px;
     }
 
     .hero-content h1 {
-      font-size: 3rem;
-      color: var(--azul);
+      font-size: 2.5rem;
+      color: var(--azul-profundo);
+      margin-bottom: 10px;
     }
 
     .hero-content p {
-      font-size: 1.5rem;
-      color: var(--oro);
-      margin: 1rem 0 2rem;
+      font-size: 1.2rem;
+      color: var(--amarillo-oro);
+      font-weight: bold;
+      margin-bottom: 20px;
     }
 
-    .btn {
+    .btn-wsp {
       background: #25D366;
       color: white;
-      padding: 1rem 2rem;
-      border-radius: 50px;
+      padding: 12px 30px;
       text-decoration: none;
+      border-radius: 50px;
+      font-size: 1.2rem;
       font-weight: bold;
       display: inline-block;
-      border: 2px solid var(--oro);
+      border: 2px solid var(--amarillo-oro);
     }
 
-    .section {
-      max-width: 1200px;
-      margin: 4rem auto;
-      padding: 0 2rem;
+    /* SECCIONES */
+    .seccion {
+      max-width: 1000px;
+      margin: 40px auto;
+      padding: 0 20px;
     }
 
-    .section h2 {
-      color: var(--azul);
-      font-size: 2.2rem;
+    .seccion h2 {
+      color: var(--azul-profundo);
+      font-size: 2rem;
       text-align: center;
-      border-bottom: 4px solid var(--oro);
-      padding-bottom: 0.5rem;
-      display: inline-block;
+      margin-bottom: 30px;
+      border-bottom: 3px solid var(--amarillo-oro);
+      padding-bottom: 10px;
     }
 
     .grid-3 {
       display: grid;
       grid-template-columns: repeat(3, 1fr);
-      gap: 2rem;
-      margin-top: 2rem;
+      gap: 20px;
     }
 
     .card {
       background: white;
-      padding: 2rem;
-      border-radius: 20px;
-      box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-      border-top: 5px solid var(--oro);
+      padding: 25px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
+      text-align: center;
+      border-top: 5px solid var(--amarillo-oro);
     }
 
     .card h3 {
-      color: var(--azul);
-      font-size: 1.6rem;
-      margin-bottom: 1rem;
+      color: var(--azul-profundo);
+      font-size: 1.5rem;
+      margin-bottom: 15px;
     }
 
+    .card p {
+      color: #555;
+      line-height: 1.6;
+    }
+
+    .card ul {
+      list-style: none;
+      text-align: left;
+    }
+
+    .card li {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card li::before {
+      content: "✓";
+      color: var(--amarillo-oro);
+      font-weight: bold;
+    }
+
+    /* QR */
     .qr-section {
       background: #fff8e7;
       border-radius: 40px;
       padding: 3rem;
-      border: 3px solid var(--oro);
+      border: 3px solid var(--amarillo-oro);
+      margin: 40px auto;
     }
 
     .qr-container {
@@ -170,26 +208,39 @@
     .qr-container img {
       max-width: 250px;
       border-radius: 20px;
-      border: 4px solid var(--azul);
+      border: 4px solid var(--azul-profundo);
     }
 
+    /* CONTACTO */
     .contacto-box {
       background: white;
-      padding: 2rem;
-      border-radius: 30px;
+      padding: 30px;
+      border-radius: 15px;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.1);
       text-align: center;
-      border: 3px solid var(--oro);
+      border: 2px solid var(--amarillo-oro);
       max-width: 500px;
       margin: 0 auto;
     }
 
+    .contacto-box p {
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+
+    /* FOOTER */
     footer {
-      background: var(--azul);
+      background: var(--azul-profundo);
       color: white;
       text-align: center;
-      padding: 2rem;
-      margin-top: 4rem;
-      border-top: 5px solid var(--oro);
+      padding: 30px;
+      margin-top: 40px;
+      border-top: 5px solid var(--amarillo-oro);
+    }
+
+    footer a {
+      color: var(--amarillo-oro);
+      text-decoration: none;
     }
 
     @media (max-width: 768px) {
@@ -199,21 +250,22 @@
       .grid-3 {
         grid-template-columns: 1fr;
       }
-      .menu-toggle {
+      .hamburguesa {
         display: block;
       }
-      .nav-links {
+      .menu {
         display: none;
         position: absolute;
         top: 70px;
         left: 0;
         width: 100%;
-        background: var(--azul);
+        background: var(--azul-profundo);
         flex-direction: column;
         align-items: center;
-        padding: 2rem 0;
+        padding: 20px 0;
+        gap: 15px;
       }
-      .nav-links.active {
+      .menu.mostrar {
         display: flex;
       }
     }
@@ -221,86 +273,110 @@
 </head>
 <body>
 
-<header>
-  <div class="nav-container">
-    <div class="logo">CARLOS <span>ACARREOS</span></div>
-    <button class="menu-toggle" id="menuToggle">☰</button>
-    <ul class="nav-links" id="navLinks">
-      <li><a href="#inicio">Inicio</a></li>
-      <li><a href="#filosofia">Filosofía</a></li>
-      <li><a href="#servicios">Servicios</a></li>
-      <li><a href="#qr">QR</a></li>
-      <li><a href="#contacto">Contacto</a></li>
-    </ul>
-  </div>
-</header>
-
-<main id="inicio">
-  <section class="hero">
-    <div class="hero-imagen"></div>
-    <div class="hero-content">
-      <h1>CARLOS ACARREOS</h1>
-      <p>Seguridad · Compromiso · Puntualidad</p>
-      <a href="https://wa.me/573005274172" class="btn" target="_blank">📱 WhatsApp 300 527 4172</a>
-    </div>
-  </section>
-</main>
-
-<section id="filosofia" class="section">
-  <h2>NUESTRA FILOSOFÍA</h2>
-  <div class="grid-3">
-    <div class="card">
-      <h3>🎯 Misión</h3>
-      <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
-    </div>
-    <div class="card">
-      <h3>👁️ Visión</h3>
-      <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra puntualidad y trato personalizado.</p>
-    </div>
-    <div class="card">
-      <h3>⭐ Valores</h3>
-      <ul style="list-style: none;">
-        <li>✓ Compromiso: Con tu carga y tiempo</li>
-        <li>✓ Seguridad: Máxima protección</li>
-        <li>✓ Confianza: Transparencia total</li>
-        <li>✓ Puntualidad: Siempre a tiempo</li>
+  <header>
+    <div class="nav-container">
+      <div class="brand">CARLOS <span>ACARREOS</span></div>
+      <button class="hamburguesa" id="menuBtn">☰</button>
+      <ul class="menu" id="menu">
+        <li><a href="#inicio">Inicio</a></li>
+        <li><a href="#filosofia">Filosofía</a></li>
+        <li><a href="#servicios">Servicios</a></li>
+        <li><a href="#qr">QR</a></li>
+        <li><a href="#contacto">Contacto</a></li>
       </ul>
     </div>
-  </div>
-</section>
+  </header>
 
-<section id="qr" class="section qr-section">
-  <div class="qr-container">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://acarreoscarlos.netlify.app/" alt="QR">
-    <div>
-      <h2 style="border-bottom: none;">📲 ESCANEA Y CONTACTA</h2>
-      <p style="font-size: 1.2rem;">Accede al sitio al instante desde tu celular.</p>
+  <main id="inicio">
+    <section class="hero">
+      <div class="hero-img"></div>
+      <div class="hero-content">
+        <h1>CARLOS ACARREOS</h1>
+        <p>Seguridad · Compromiso · Puntualidad</p>
+        <a href="https://wa.me/573005274172" class="btn-wsp">📱 300 527 4172</a>
+      </div>
+    </section>
+  </main>
+
+  <section id="filosofia" class="seccion">
+    <h2>NUESTRA FILOSOFÍA</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>🎯 Misión</h3>
+        <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
+      </div>
+      <div class="card">
+        <h3>👁️ Visión</h3>
+        <p>Ser la empresa de acarreos líder en la región, reconocida por nuestra puntualidad y trato personalizado.</p>
+      </div>
+      <div class="card">
+        <h3>⭐ Valores</h3>
+        <ul>
+          <li><strong>Compromiso:</strong> Con tu carga y tiempo</li>
+          <li><strong>Seguridad:</strong> Máxima protección</li>
+          <li><strong>Confianza:</strong> Transparencia total</li>
+          <li><strong>Puntualidad:</strong> Siempre a tiempo</li>
+        </ul>
+      </div>
     </div>
-  </div>
-</section>
+  </section>
 
-<section id="contacto" class="section">
-  <h2>CONTACTO</h2>
-  <div class="contacto-box">
-    <p><strong>Carlos Acarreos</strong></p>
-    <p>📱 300 527 4172</p>
-    <p>📍 Atención 24/7</p>
-  </div>
-</section>
+  <section id="servicios" class="seccion">
+    <h2>SERVICIOS</h2>
+    <div class="grid-3">
+      <div class="card">
+        <h3>🚚 Mudanzas</h3>
+        <p>Nivel nacional e internacional. Traslado de muebles y electrodomésticos con total cuidado.</p>
+      </div>
+      <div class="card">
+        <h3>📦 Acarreos</h3>
+        <p>Servicio puerta a puerta para tus pertenencias. Rapidez y compromiso.</p>
+      </div>
+      <div class="card">
+        <h3>📍 Cobertura</h3>
+        <p>Bucaramanga, Bogotá, Cali, Medellín, Santa Marta, Valledupar y toda la frontera.</p>
+      </div>
+    </div>
+  </section>
 
-<footer>
-  <p>&copy; 2026 Carlos Acarreos · 300 527 4172</p>
-</footer>
+  <section id="qr" class="seccion qr-section">
+    <div class="qr-container">
+      <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://acarreoscarlos.netlify.app/" alt="QR">
+      <div>
+        <h2 style="border-bottom: none;">📲 ESCANEA Y CONTACTA</h2>
+        <p style="font-size: 1.2rem;">Accede al sitio al instante desde tu celular.</p>
+      </div>
+    </div>
+  </section>
 
-<script>
-  const btn = document.getElementById('menuToggle');
-  const menu = document.getElementById('navLinks');
-  btn.addEventListener('click', () => menu.classList.toggle('active'));
-  
-  document.querySelectorAll('.nav-links a').forEach(link => {
-    link.addEventListener('click', () => menu.classList.remove('active'));
-  });
-</script>
+  <section id="contacto" class="seccion">
+    <h2>CONTACTO</h2>
+    <div class="contacto-box">
+      <p><strong>Carlos Acarreos</strong></p>
+      <p>📱 300 527 4172</p>
+      <p>📍 Atención 24/7</p>
+    </div>
+  </section>
+
+  <footer>
+    <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
+    <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</p>
+  </footer>
+
+  <script>
+    const menuBtn = document.getElementById('menuBtn');
+    const menu = document.getElementById('menu');
+
+    menuBtn.addEventListener('click', () => {
+      menu.classList.toggle('mostrar');
+    });
+
+    document.querySelectorAll('.menu a').forEach(link => {
+      link.addEventListener('click', () => {
+        menu.classList.remove('mostrar');
+      });
+    });
+  </script>
 
 </body>
 </html>
