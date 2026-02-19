@@ -87,7 +87,8 @@
       width: 100%;
       min-height: 300px;
       background-size: cover;
-      background-position: center;
+      /* ✅ LA ÚNICA LÍNEA QUE CAMBIA: ahora enfoca la parte de ABAJO */
+      background-position: center bottom;
       background-image: url('portada.jpg');
     }
 
@@ -154,6 +155,24 @@
       margin-bottom: 15px;
     }
 
+    .card ul {
+      list-style: none;
+      text-align: left;
+    }
+
+    .card li {
+      margin: 10px 0;
+      display: flex;
+      align-items: center;
+      gap: 8px;
+    }
+
+    .card li::before {
+      content: "✓";
+      color: var(--oro);
+      font-weight: bold;
+    }
+
     .qr-section {
       background: #fff8e7;
       border-radius: 40px;
@@ -174,6 +193,15 @@
       border: 4px solid var(--azul);
     }
 
+    .qr-container h2 {
+      border-bottom: none;
+      color: var(--azul);
+    }
+
+    .qr-container p {
+      font-size: 1.2rem;
+    }
+
     .contacto-box {
       background: white;
       padding: 30px;
@@ -184,6 +212,11 @@
       text-align: center;
     }
 
+    .contacto-box p {
+      margin: 10px 0;
+      font-size: 1.2rem;
+    }
+
     footer {
       background: var(--azul);
       color: white;
@@ -191,6 +224,11 @@
       padding: 30px;
       margin-top: 40px;
       border-top: 5px solid var(--oro);
+    }
+
+    footer a {
+      color: var(--oro);
+      text-decoration: none;
     }
 
     @media (max-width: 768px) {
@@ -213,6 +251,7 @@
         flex-direction: column;
         align-items: center;
         padding: 20px 0;
+        gap: 15px;
       }
       .menu.mostrar {
         display: flex;
@@ -252,7 +291,7 @@
   <div class="grid-3">
     <div class="card">
       <h3>🎯 Misión</h3>
-      <p>Brindar soluciones de transporte con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
+      <p>Brindar soluciones de transporte y acarreo con la más alta calidad, garantizando que cada carga llegue a su destino en perfectas condiciones.</p>
     </div>
     <div class="card">
       <h3>👁️ Visión</h3>
@@ -260,11 +299,11 @@
     </div>
     <div class="card">
       <h3>⭐ Valores</h3>
-      <ul style="list-style: none;">
-        <li>✓ Compromiso: Con tu carga y tiempo</li>
-        <li>✓ Seguridad: Máxima protección</li>
-        <li>✓ Confianza: Transparencia total</li>
-        <li>✓ Puntualidad: Siempre a tiempo</li>
+      <ul>
+        <li><strong>Compromiso:</strong> Con tu carga y tiempo</li>
+        <li><strong>Seguridad:</strong> Máxima protección</li>
+        <li><strong>Confianza:</strong> Transparencia total</li>
+        <li><strong>Puntualidad:</strong> Siempre a tiempo</li>
       </ul>
     </div>
   </div>
@@ -290,10 +329,11 @@
 
 <section id="qr" class="seccion qr-section">
   <div class="qr-container">
-    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://acarreoscarlos.netlify.app/" alt="QR">
+    <img src="https://api.qrserver.com/v1/create-qr-code/?size=300x300&data=https://acarreoscarlos.netlify.app/" alt="Código QR de Carlos Acarreos">
     <div>
-      <h2 style="border-bottom: none;">📲 ESCANEA Y CONTACTA</h2>
-      <p style="font-size: 1.2rem;">Accede al sitio al instante desde tu celular.</p>
+      <h2>📲 ESCANEA Y CONTACTA</h2>
+      <p>Guarda nuestro código QR en tu celular. Escanéalo con la cámara para acceder al sitio web al instante.</p>
+      <p style="color: var(--oro); font-weight: bold;">¡Escanea, comparte y contrata!</p>
     </div>
   </div>
 </section>
@@ -302,26 +342,29 @@
   <h2>CONTACTO</h2>
   <div class="contacto-box">
     <p><strong>Carlos Acarreos</strong></p>
-    <p>📱 300 527 4172</p>
+    <p>📱 <strong>300 527 4172</strong></p>
     <p>📍 Atención 24/7</p>
+    <p>Disponible en WhatsApp y llamadas</p>
+    <a href="https://wa.me/573005274172" class="btn" style="margin-top: 1rem;">📱 Enviar WhatsApp</a>
   </div>
 </section>
 
 <footer>
   <p>&copy; 2026 Carlos Acarreos · Todos los derechos reservados</p>
-  <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7</p>
+  <p>📱 <a href="tel:+573005274172">300 527 4172</a> · 24/7 a tu servicio</p>
+  <p>🚛 Transporte de carga con responsabilidad</p>
 </footer>
 
 <script>
   const btn = document.getElementById('menuBtn');
   const menu = document.getElementById('menu');
-  
-  btn.addEventListener('click', function() {
+
+  btn.addEventListener('click', () => {
     menu.classList.toggle('mostrar');
   });
 
   document.querySelectorAll('.menu a').forEach(link => {
-    link.addEventListener('click', function() {
+    link.addEventListener('click', () => {
       menu.classList.remove('mostrar');
     });
   });
